@@ -26,6 +26,16 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            // Inicializar EmailJS con tu Public Key
+            emailjs.init("fBsDQAPpy2ke_o-zr"); // Reemplaza con tu Public Key de EmailJS
+        })();
+    </script>
+
 </head>
 <body>
 <!-- Inicio de la barra Superior -->
@@ -36,9 +46,11 @@
                     <div class="d-inline-flex align-items-center">
                         <a class="text-white pr-3" href="">Preguntas Frecuentes</a>
                         <span class="text-white">|</span>
-                        <a class="text-white px-3" href="">Ayuda</a>
+                        <a class="text-white px-3" href="contact.html">Ayuda</a>
+
                         <span class="text-white">|</span>
-                        <a class="text-white pl-3" href="">Soporte</a>
+                        <a class="text-white pl-3" href="mailto:soportemomed@googlegroups.com">Soporte Técnico</a>
+
                     </div>
                 </div>
                 <div class="col-md-6 text-center text-lg-right">
@@ -88,17 +100,17 @@
                         <!--Brayan:CAMBIO TEXTOs A Español-->
                         <a href="index.html" class="nav-item text-rich-black nav-link active">Hogar</a>
                         <a href="about.html" class="nav-item text-timber-green nav-link">Acerca de</a>
-                        <a href="service.html" class="nav-item text-timber-green nav-link">Servicio</a>
-                        <a href="project.html" class="nav-item text-timber-green nav-link">Proyecto</a>
+                        <a href="service.html" class="nav-item text-timber-green nav-link">Servicios</a> 
+                        <a href="project.html" class="nav-item text-timber-green nav-link">Proyectos</a> 
+                        <a href="filtros.html" class="nav-item text-timber-green nav-link">Diseñame</a>  
+                        <a href="contact.html" class="nav-item text-timber-green nav-link">Contacto</a>       
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle text-timber-green" data-toggle="dropdown">Paginas</a>
+                            <a href="#" class="nav-link dropdown-toggle text-timber-green" data-toggle="dropdown">Más Paginas...</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="blog.html" class="dropdown-item text-timber-green">Cuadricula de Blog</a>
-                                <a href="single.html" class="dropdown-item text-timber-green">Detalle del Blog</a>
-                                <a href="filtros.html" class="dropdown-item text-timber-green">Editor Visual</a>
+                                <a href="blog.html" class="dropdown-item text-timber-green">Nuestra Revista</a>
+                                <a href="single.html" class="dropdown-item text-timber-green">Sabías Qué…?</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item text-timber-green nav-link">Contacto</a>
                     </div>
                 </div>
             </nav>
@@ -175,12 +187,11 @@
     <div class="container-fluid bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-lg-5">
-                    <!--Charly Cambio de color-->
-                    <div class="d-flex flex-column align-items-center justify-content-center bg-basil h-100 py-5 px-3">
-                        <i class="flaticon-brickwall display-1 font-weight-normal text-rich-black mb-3"></i>
-                        <h4 class="display-3 mb-3">+5</h4>
-                        <h1 class="m-0">Años de Experiencia</h1>
+                <div class="col-md-4 col-sm-6">
+                    <!--Charly cambio de color-->
+                    <div class="py-5 px-4 h-100 bg-basil d-flex flex-column align-items-center justify-content-center">
+                        <h6 class="text-white font-weight-normal text-uppercase mb-3">Nuestro Trabajo</h6>
+                        <h1 class="mb-0 text-center">Expertos En Cada Detalle.</h1>
                     </div>
                 </div>
                 <div class="col-lg-7 m-0 my-lg-5 pt-5 pb-5 pb-lg-2 pl-lg-5">
@@ -255,16 +266,16 @@
                 <div class="col-lg-7 mt-5 py-5 pr-lg-5">
                     <!--Charly cambio de color-->
                     <h6 class="text-shamrock font-weight-normal text-uppercase mb-3">¿Por qué elegirnos?</h6>
-                    <h1 class="mb-4 section-title">Más de 5 años de experiencia en el ramo del diseño y la construcción.</h1>
+                    <h1 class="mb-4 section-title">Creamos Lugares Que Inspiran Y Dejan Huella En Quienes Los Viven.</h1>
                     <!--Charly Cambio de color-->
                     <p class="mb-4 text-dark">Transformamos cada espacio en una obra única, combinando experiencia, creatividad y atención al detalle para reflejar la personalidad y estilo de cada cliente.</p>
                     <ul class="list-inline">
                         <!--Charly cambio de color-->
-                        <li><h5><i class="far fa-check-square text-shamrock mr-3"></i>+5 Años de Experiencia</h5></li>
+                        <li><h5><i class="far fa-check-square text-shamrock mr-3"></i>Diseñamos Y Construimos Proyectos Que Van Más Allá De Lo Funcional</h5></li>
                         <li><h5><i class="far fa-check-square text-shamrock mr-3"></i>Diseño Verde / Sustentable</h5></li>
                         <li><h5><i class="far fa-check-square text-shamrock mr-3"></i>Satisfacción del cliente</h5></li>
                     </ul>
-                    <a href="" class="btn btn-primary mt-3 py-2 px-4">Ver más</a>
+                    <a href="service.html" class="btn btn-primary mt-3 py-2 px-4">Ver más</a>
                 </div>
                 <div class="col-lg-5">
                     <div class="d-flex flex-column align-items-center justify-content-center h-100 overflow-hidden">
@@ -433,44 +444,50 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <!--Charly cambio del color-->
-                <h4 class="text-shamrock mb-4">Accesos Directos
+                 <h4 class="text-shamrock mb-4">Accesos Directos</h4>
+<div class="d-flex flex-column justify-content-start">
+    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+    <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
+    <a class="text-white mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i>Nuestros Servicios</a>
+    <a class="text-white mb-2" href="project.html"><i class="fa fa-angle-right mr-2"></i>Nuestros Proyectos</a>
+    <a class="text-white" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+</div>
 
-                </h4>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Nuestros Servicios</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Nuestros Proyectos</a>
-                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
-                </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <!--Charly agregado del color-->
                 <h4 class="text-shamrock mb-4">Secciones Populares</h4>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Nuestros Servicios</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Nuestros Proyectos</a>
-                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
-                </div>
-            </div>
+<div class="d-flex flex-column justify-content-start">
+    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+    <a class="text-white mb-2" href="filtros.html"><i class="fa fa-angle-right mr-2"></i>Diseñame</a>
+    <a class="text-white mb-2" href="single.html"><i class="fa fa-angle-right mr-2"></i>Sabías Qué…?</a>
+    <a class="text-white mb-2" href="project.html"><i class="fa fa-angle-right mr-2"></i>Nuestros Proyectos</a>
+    <a class="text-white" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+</div>
+</div>
+
+<!--Inicio de comentarios-->
             <div class="col-lg-3 col-md-6 mb-5">
                 <!--Charly agregado del color-->
-                <h4 class="text-shamrock mb-4">Conéctate con Nosotros</h4>
-                <form action="">
+                <h4 class="text-shamrock mb-4">Déjanos tu opinión</h4>
+                <!-- Agregado id al formulario y corregido el tipo de input para comentario -->
+                <form id="comentarios-form">
                     <div class="form-group">
-                        <input type="text" class="form-control border-0" placeholder="Tu Nombre" required="required" />
+                        <input type="text" name="nombre" class="form-control border-0" placeholder="Nombre Completo" required="required" />
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control border-0" placeholder="Tu Correo Electrónico" required="required" />
+                        <!-- Cambiado de type="email" a textarea para comentarios -->
+                        <textarea name="comentario" class="form-control border-0" placeholder="Escribe tu comentario aquí..." rows="4" required="required"></textarea>
                     </div>
+                    <!-- Eliminado campo de email según solicitud del usuario -->
                     <div>
-                        <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Enviar ahora</button>
+                        <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Enviar</button>
                     </div>
                 </form>
             </div>
         </div>
+<!--Fin de los comentarios-->
+
         <div class="container border-top border-secondary pt-5">
             <p class="m-0 text-center text-white">
                 &copy; <a class="text-white font-weight-bold" href="#">MOMED</a>. Todos los derechos reservados.
@@ -500,17 +517,17 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 
-    <!-- Musica de Fondo Playlist mejorado por Charly -->
+    <!--Inicio de Musica de Fondo Playlist mejorado por Charly -->
     <audio id="musicaFondo" autoplay style="display: none;">
-    </audio>
+</audio>
 
-    <button onclick="toggleAudio()" class="musica-banner">
-        🔊Música
-    </button>
+<button onclick="toggleAudio()" class="musica-banner" id="botonMusica">
+    🔊 Música
+</button>
 
-    <script>
-        // Aqui se ponen las canciones 
-        const canciones = [ 
+<script>
+    // Aqui se ponen las canciones 
+    const canciones = [
             "Musica/Romance.mp3",
             "Musica/I love You Always Forever.mp3",
             "Musica/In Memoriam.mp3", 
@@ -532,32 +549,97 @@
             "Musica/Give Me a Kiss.mp3",
             "Musica/Hunting.mp3",
             "Musica/I know.mp3"
-        ];
+    ];
 
-        const audio = document.getElementById('musicaFondo');
-        let isPlaying = true;
-        let cancionActual = 0;
+    const audio = document.getElementById('musicaFondo');
+    const botonMusica = document.getElementById('botonMusica');
+    let isPlaying = false;
+    let cancionActual = 0;
 
-        // Carga la primera canción
+    function iniciarMusicaAutomatica() {
         audio.src = canciones[cancionActual];
-
-        // Cuando termine una canción, se reproduce la siguiente automáticamente
-        audio.addEventListener('ended', function() {
-            cancionActual = (cancionActual + 1) % canciones.length; // Vuelve al inicio cuando termine la lista
-            audio.src = canciones[cancionActual];
-            audio.play(); // Reproduce automáticamente la siguiente cancion
-        });
-
-        function toggleAudio() {
-            if (isPlaying) {
-                audio.pause();
-                event.target.innerText = "🔇Mute";
-            } else {
-                audio.play();
-                event.target.innerText = "🔊Música";
-            }
-            isPlaying = !isPlaying;
+        audio.volume = 1.0; // Volumen máximo
+        
+        // Intenta reproducir inmediatamente
+        const playPromise = audio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                isPlaying = true;
+                console.log("[v0] Música iniciada automáticamente al cargar");
+            }).catch(error => {
+                // Si falla, intenta de nuevo en el primer click
+                document.addEventListener('click', function() {
+                    audio.play().then(() => {
+                        isPlaying = true;
+                    });
+                }, { once: true });
+            });
         }
+    }
+
+    window.addEventListener('load', iniciarMusicaAutomatica);
+    // También intentar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', iniciarMusicaAutomatica);
+
+    // Cuando termine una canción, se reproduce la siguiente automáticamente
+    audio.addEventListener('ended', function() {
+        cancionActual = (cancionActual + 1) % canciones.length;
+        audio.src = canciones[cancionActual];
+        audio.play();
+        console.log("[v0] Cambiando a la siguiente canción:", canciones[cancionActual]);
+    });
+
+    function toggleAudio() {
+        if (isPlaying) {
+            audio.pause();
+            botonMusica.innerText = "🔇 Mute";
+        } else {
+            audio.play().then(() => {
+                botonMusica.innerText = "🔊 Música";
+            });
+        }
+        isPlaying = !isPlaying;
+    }
+
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .musica-banner {
+            transition: all 0.3s ease;
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+<!--Fin de la reproduccion de Musica-->
+<!-- Script para manejar el envío de comentarios con EmailJS -->
+    <script>
+        document.getElementById('comentarios-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Obtener los datos del formulario
+            const formData = new FormData(this);
+            const templateParams = {
+                from_name: formData.get('nombre'),
+                message: formData.get('comentario'),
+                fecha: new Date().toLocaleDateString('es-ES')
+            };
+            
+            // Enviar email usando EmailJS
+            emailjs.send('service_uovpo9g', 'template_q54exgf', templateParams)
+                .then(function(response) {
+                    alert('¡Comentario enviado exitosamente!');
+                    document.getElementById('comentarios-form').reset();
+                }, function(error) {
+                    alert('Error al enviar el comentario. Por favor intenta de nuevo.');
+                    console.error('Error:', error);
+                });
+        });
     </script>
+
 </body>
 </html>

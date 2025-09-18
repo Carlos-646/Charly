@@ -26,6 +26,16 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            // Inicializar EmailJS con tu Public Key
+            emailjs.init("fBsDQAPpy2ke_o-zr"); // Reemplaza con tu Public Key de EmailJS
+        })();
+    </script>
+
 </head>
 
 <!-- Inicio de la barra de Navegación -->
@@ -38,9 +48,11 @@
                     <div class="d-inline-flex align-items-center">
                         <a class="text-white pr-3" href="">Preguntas Frecuentes</a>
                         <span class="text-white">|</span>
-                        <a class="text-white px-3" href="">Ayuda</a>
+                        <a class="text-white px-3" href="contact.html">Ayuda</a>
+
                         <span class="text-white">|</span>
-                        <a class="text-white pl-3" href="">Soporte</a>
+                        <a class="text-white pl-3" href="mailto:soportemomed@googlegroups.com">Soporte Técnico</a>
+
                     </div>
                 </div>
                 <div class="col-md-6 text-center text-lg-right">
@@ -85,18 +97,17 @@
                         <!--Brayan:CAMBIO TEXTOs A Español-->
                         <a href="index.html" class="nav-item text-rich-black nav-link active">Hogar</a>
                         <a href="about.html" class="nav-item text-timber-green nav-link">Acerca de</a>
-                        <a href="service.html" class="nav-item text-timber-green nav-link">Servicio</a>
-                        <a href="project.html" class="nav-item text-timber-green nav-link">Proyecto</a>
+                        <a href="service.html" class="nav-item text-timber-green nav-link">Servicios</a> 
+                        <a href="project.html" class="nav-item text-timber-green nav-link">Proyectos</a> 
+                        <a href="filtros.html" class="nav-item text-timber-green nav-link">Diseñame</a>  
+                        <a href="contact.html" class="nav-item text-timber-green nav-link">Contacto</a>       
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle text-timber-green" data-toggle="dropdown">Paginas</a>
+                            <a href="#" class="nav-link dropdown-toggle text-timber-green" data-toggle="dropdown">Más Paginas...</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="blog.html" class="dropdown-item text-timber-green">Cuadricula de Blog</a>
-                                <a href="single.html" class="dropdown-item text-timber-green">Detalle del Blog</a>
-                                <a href="filtros.html" class="dropdown-item text-timber-green">Editor Visual</a>
-
+                                <a href="blog.html" class="dropdown-item text-timber-green">Nuestra Revista</a>
+                                <a href="single.html" class="dropdown-item text-timber-green">Sabías Qué…?</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item text-timber-green nav-link">Contacto</a>
                     </div>
                 </div>
             </nav>
@@ -170,39 +181,67 @@
 
 
     <!-- "Inicio de la sección de Servicios" -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-6 pr-lg-5">
-                    <!--Charly cambio de color-->
-                    <h6 class="text-shamrock font-weight-normal text-uppercase mb-3">Servicios que Marcan la Diferencia</h6>
-                    <h1 class="mb-4 section-title">Espacios que Inspiran</h1>
-                    <p class="text-dark">Creamos espacios únicos que reflejan tu estilo y personalidad, cuidando cada detalle desde el concepto hasta la ejecución. Nuestro compromiso es transformar tu hogar en un lugar donde el diseño y la funcionalidad convivan en perfecta armonía.</p>
-                    <a href="" class="btn btn-primary mt-3 py-2 px-4">Ver más</a>
-                </div>
-                <div class="col-lg-6 p-0 pt-5 pt-lg-0">
-                    <div class="owl-carousel service-carousel position-relative">
-                        <div class="d-flex flex-column text-center bg-light mx-3 p-4">
-                            <!--Charly cambio de color-->
-                            <img src="img/casa-lujo.jpg" alt="Casa Residencial"
-style="width: 100%; max-width: 200px; height: auto; object-fit: cover; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: block; margin: 0 auto 1rem; background-color: #fff;">
-                            <h5 class="mb-3">Residencial</h5>
-                            <p class="m-0 text-dark">Interiores cálidos y personalizados que combinan confort, estilo y funcionalidad para tu hogar</p>
-                        </div>
-                        <div class="d-flex flex-column text-center bg-light mx-3 p-4">
-                            <!--Charly cambio de color-->
-                           
-                            <!--Charly cambio de color-->
-                            <img src="img/6-33-wpcf_1800x1100.jpg" alt="Casa Club"
-style="width: 100%; max-width: 200px; height: auto; object-fit: cover; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: block; margin: 0 auto 1rem; background-color: #fff;">
-                            <h5 class="mb-3">Casa Club</h5>
-                            <p class="m-0 text-dark">Espacios interiores elegantes y versátiles, ideales para la convivencia, el descanso y eventos sociales.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="container py-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold text-dark">Nuestro Trabajo</h2>
+    <p class="text-muted">Diseñamos espacios únicos que combinan funcionalidad, estilo y confort.</p>
+  </div>
+
+  <div class="row g-4">
+    <!-- Residencial -->
+    <div class="col-lg-3 col-md-6">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body text-center">
+          <i class="fas fa-home fa-2x text-dark mb-3"></i>
+          <h5 class="fw-bold text-dark">Residencial</h5>
+          <p class="text-dark">
+            Creamos hogares contemporáneos y funcionales que reflejan tu estilo de vida con elegancia y comodidad.
+          </p>
         </div>
+      </div>
     </div>
+
+    <!-- Casa Club -->
+    <div class="col-lg-3 col-md-6">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body text-center">
+          <i class="fas fa-building fa-2x text-dark mb-3"></i>
+          <h5 class="fw-bold text-dark">Casa Club</h5>
+          <p class="text-dark">
+            Diseñamos espacios sociales exclusivos que fomentan la convivencia, el confort y la experiencia comunitaria.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paisajismo -->
+    <div class="col-lg-3 col-md-6">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body text-center">
+          <i class="fas fa-tree fa-2x text-dark mb-3"></i>
+          <h5 class="fw-bold text-dark">Paisajismo</h5>
+          <p class="text-dark">
+            Transformamos áreas verdes en entornos armónicos y sustentables que realzan la belleza natural.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arquitectura -->
+    <div class="col-lg-3 col-md-6">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body text-center">
+          <i class="fas fa-drafting-compass fa-2x text-dark mb-3"></i>
+          <h5 class="fw-bold text-dark">Arquitectura</h5>
+          <p class="text-dark">
+            Proyectos arquitectónicos innovadores que integran diseño, estética y funcionalidad en cada detalle.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
     <!-- "Final de la sección de Servicios" -->
 
 
@@ -217,7 +256,7 @@ style="width: 100%; max-width: 200px; height: auto; object-fit: cover; border-ra
                     <p class="mb-4 text-dark">Diseñamos con propósito y pasión, cuidando cada detalle para lograr espacios que inspiran, emocionan y se adaptan a tu estilo de vida.</p>
                     <ul class="list-inline">
                         <!--Charly cambio de color-->
-                        <li><h5><i class="far fa-check-square text-shamrock mr-3"></i>+5 años de experiencia</h5></li>
+                        <li><h5><i class="far fa-check-square text-shamrock mr-3"></i>Promover La Armonía Y Mejorar La Calidad De Vida A Través De Un Diseño Consciente, Sustentable Y Estético.</h5></li>
                         <li><h5><i class="far fa-check-square text-shamrock mr-3"></i>El Mejor Diseño de Interiores</h5></li>
                         <li><h5><i class="far fa-check-square text-shamrock mr-3"></i>Clientes Satisfechos</h5></li>
                     </ul>
@@ -340,41 +379,50 @@ style="width: 100%; max-width: 200px; height: auto; object-fit: cover; border-ra
             <div class="col-lg-3 col-md-6 mb-5">
                 <!--Charly cambio de color-->
                 <h4 class="text-shamrock mb-4">Accesos Directos</h4>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Nuestros Servicios</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Nuestros Proyectos</a>
-                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
-                </div>
+<div class="d-flex flex-column justify-content-start">
+    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+    <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
+    <a class="text-white mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i>Nuestros Servicios</a>
+    <a class="text-white mb-2" href="project.html"><i class="fa fa-angle-right mr-2"></i>Nuestros Proyectos</a>
+    <a class="text-white" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+</div>
+
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-                <!--Charly cambio de color-->
-                <h4 class="text-shamrock mb-4">Accesos Directos </h4>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Nuestros Servicios</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Nuestros Proyectos</a>
-                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
-                </div>
-            </div>
+                <!--Charly agregado del color-->
+                <h4 class="text-shamrock mb-4">Secciones Populares</h4>
+<div class="d-flex flex-column justify-content-start">
+    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+    <a class="text-white mb-2" href="filtros.html"><i class="fa fa-angle-right mr-2"></i>Diseñame</a>
+    <a class="text-white mb-2" href="single.html"><i class="fa fa-angle-right mr-2"></i>Sabías Qué…?</a>
+    <a class="text-white mb-2" href="project.html"><i class="fa fa-angle-right mr-2"></i>Nuestros Proyectos</a>
+    <a class="text-white" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+</div>
+</div>
+
+<!--Inicio de comentarios-->
             <div class="col-lg-3 col-md-6 mb-5">
-                <!--Charly cambio de color-->
-                <h4 class="text-shamrock mb-4">Conéctate con Nosotros</h4>
-                <form action="">
+                <!--Charly agregado del color-->
+                <h4 class="text-shamrock mb-4">Déjanos tu opinión</h4>
+                <!-- Agregado id al formulario y corregido el tipo de input para comentario -->
+                <form id="comentarios-form">
                     <div class="form-group">
-                        <input type="text" class="form-control border-0" placeholder="Tu Nombre" required="required" />
+                        <input type="text" name="nombre" class="form-control border-0" placeholder="Nombre Completo" required="required" />
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control border-0" placeholder="Tu Correo Electronico" required="required" />
+                        <!-- Cambiado de type="email" a textarea para comentarios -->
+                        <textarea name="comentario" class="form-control border-0" placeholder="Escribe tu comentario aquí..." rows="4" required="required"></textarea>
                     </div>
+                    <!-- Eliminado campo de email según solicitud del usuario -->
                     <div>
-                        <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Enviar ahora</button>
+                        <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Enviar</button>
                     </div>
                 </form>
             </div>
         </div>
+<!--Fin de los comentarios-->
+
+
         <div class="container border-top border-secondary pt-5">
             <p class="m-0 text-center text-white">
                 &copy; <a class="text-white font-weight-bold" href="#">MOMED</a>. Todos los derechos reservados.
@@ -404,18 +452,18 @@ style="width: 100%; max-width: 200px; height: auto; object-fit: cover; border-ra
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 
-    <!-- Musica de Fondo Playlist mejorado por Charly -->
+    <!--Inicio de Musica de Fondo Playlist mejorado por Charly -->
     <audio id="musicaFondo" autoplay style="display: none;">
-    </audio>
+</audio>
 
-    <button onclick="toggleAudio()" class="musica-banner">
-        🔊Música
-    </button>
+<button onclick="toggleAudio()" class="musica-banner" id="botonMusica">
+    🔊 Música
+</button>
 
-    <script>
-        // Aqui se ponen las canciones 
-        const canciones = [ 
-            "Musica/In Memoriam.mp3", 
+<script>
+    // Aqui se ponen las canciones 
+    const canciones = [
+        "Musica/In Memoriam.mp3", 
             "Musica/Jealous Girl.mp3",
             "Musica/La Mer.mp3",
             "Musica/Late Night Alumni.mp3", 
@@ -436,32 +484,97 @@ style="width: 100%; max-width: 200px; height: auto; object-fit: cover; border-ra
             "Musica/Hunting.mp3",
             "Musica/I know.mp3",
             "Musica/I love You Always Forever.mp3"
-        ];
+    ];
 
-        const audio = document.getElementById('musicaFondo');
-        let isPlaying = true;
-        let cancionActual = 0;
+    const audio = document.getElementById('musicaFondo');
+    const botonMusica = document.getElementById('botonMusica');
+    let isPlaying = false;
+    let cancionActual = 0;
 
-        // Carga la primera canción
+    function iniciarMusicaAutomatica() {
         audio.src = canciones[cancionActual];
-
-        // Cuando termine una canción, se reproduce la siguiente automáticamente
-        audio.addEventListener('ended', function() {
-            cancionActual = (cancionActual + 1) % canciones.length; // Vuelve al inicio cuando termine la lista
-            audio.src = canciones[cancionActual];
-            audio.play(); // Reproduce automáticamente la siguiente cancion
-        });
-
-        function toggleAudio() {
-            if (isPlaying) {
-                audio.pause();
-                event.target.innerText = "🔇Mute";
-            } else {
-                audio.play();
-                event.target.innerText = "🔊Música";
-            }
-            isPlaying = !isPlaying;
+        audio.volume = 1.0; // Volumen máximo
+        
+        // Intenta reproducir inmediatamente
+        const playPromise = audio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                isPlaying = true;
+                console.log("[v0] Música iniciada automáticamente al cargar");
+            }).catch(error => {
+                // Si falla, intenta de nuevo en el primer click
+                document.addEventListener('click', function() {
+                    audio.play().then(() => {
+                        isPlaying = true;
+                    });
+                }, { once: true });
+            });
         }
+    }
+
+    window.addEventListener('load', iniciarMusicaAutomatica);
+    // También intentar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', iniciarMusicaAutomatica);
+
+    // Cuando termine una canción, se reproduce la siguiente automáticamente
+    audio.addEventListener('ended', function() {
+        cancionActual = (cancionActual + 1) % canciones.length;
+        audio.src = canciones[cancionActual];
+        audio.play();
+        console.log("[v0] Cambiando a la siguiente canción:", canciones[cancionActual]);
+    });
+
+    function toggleAudio() {
+        if (isPlaying) {
+            audio.pause();
+            botonMusica.innerText = "🔇 Mute";
+        } else {
+            audio.play().then(() => {
+                botonMusica.innerText = "🔊 Música";
+            });
+        }
+        isPlaying = !isPlaying;
+    }
+
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .musica-banner {
+            transition: all 0.3s ease;
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+<!--Fin de la reproduccion de Musica-->
+<!-- Script para manejar el envío de comentarios con EmailJS -->
+    <script>
+        document.getElementById('comentarios-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Obtener los datos del formulario
+            const formData = new FormData(this);
+            const templateParams = {
+                from_name: formData.get('nombre'),
+                message: formData.get('comentario'),
+                fecha: new Date().toLocaleDateString('es-ES')
+            };
+            
+            // Enviar email usando EmailJS
+            emailjs.send('service_uovpo9g', 'template_q54exgf', templateParams)
+                .then(function(response) {
+                    alert('¡Comentario enviado exitosamente!');
+                    document.getElementById('comentarios-form').reset();
+                }, function(error) {
+                    alert('Error al enviar el comentario. Por favor intenta de nuevo.');
+                    console.error('Error:', error);
+                });
+        });
     </script>
+    
 </body>
 </html>

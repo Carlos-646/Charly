@@ -26,6 +26,15 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            // Inicializar EmailJS con tu Public Key
+            emailjs.init("fBsDQAPpy2ke_o-zr"); // Reemplaza con tu Public Key de EmailJS
+        })();
+    </script>
 </head>
 
 <body>
@@ -37,9 +46,11 @@
                     <div class="d-inline-flex align-items-center">
                         <a class="text-white pr-3" href="">Preguntas Frecuentes</a>
                         <span class="text-white">|</span>
-                        <a class="text-white px-3" href="">Ayuda</a>
+                        <a class="text-white px-3" href="contact.html">Ayuda</a>
+
                         <span class="text-white">|</span>
-                        <a class="text-white pl-3" href="">Soporte</a>
+                        <a class="text-white pl-3" href="mailto:soportemomed@googlegroups.com">Soporte Técnico</a>
+
                     </div>
                 </div>
                 <div class="col-md-6 text-center text-lg-right">
@@ -50,16 +61,12 @@
    target="_blank" 
    rel="noopener noreferrer">
    <i class="fab fa-facebook-f"></i></a>
-                        </a>
-                        </a>
-                        </a>
                         <!--Charly, Agregado y redireccion a la red social de Instagram-->
                         <a class="text-white px-3" 
    href="https://www.instagram.com/momed_arquitectura/?fbclid=IwY2xjawLGf-BleHRuA2FlbQIxMABicmlkETFGa0swOWpHN1dwZFBnSjFCAR4vy0A4iqyH8xGg_F4HKCoKwFYCBsZsAib7CEpJ7LOA2ehIvoU_87OjTcg6mg_aem_h4qptahWIcuug3rvusXuBg" 
    target="_blank" 
    rel="noopener noreferrer">
    <i class="fab fa-instagram"></i></a>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -84,24 +91,23 @@
                 <div class="navbar-nav ml-auto py-0">
                     <!--Brayan:CAMBIO TEXTOs A Español-->
                     <a href="index.html" class="nav-item text-rich-black nav-link active">Hogar</a>
-                    <a href="about.html" class="nav-item text-timber-green nav-link">Acerca de</a>
-                    <a href="service.html" class="nav-item text-timber-green nav-link">Servicio</a>
-                    <a href="project.html" class="nav-item text-timber-green nav-link">Proyecto</a>
-                    <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle text-timber-green" data-toggle="dropdown">Paginas</a>
+                        <a href="about.html" class="nav-item text-timber-green nav-link">Acerca de</a>
+                        <a href="service.html" class="nav-item text-timber-green nav-link">Servicios</a> 
+                        <a href="project.html" class="nav-item text-timber-green nav-link">Proyectos</a> 
+                        <a href="filtros.html" class="nav-item text-timber-green nav-link">Diseñame</a>  
+                        <a href="contact.html" class="nav-item text-timber-green nav-link">Contacto</a>       
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle text-timber-green" data-toggle="dropdown">Más Paginas...</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="blog.html" class="dropdown-item text-timber-green">Cuadricula de Blog</a>
-                                <a href="single.html" class="dropdown-item text-timber-green">Detalle del Blog</a>
-                                <a href="filtros.html" class="dropdown-item text-timber-green">Editor Visual</a>
+                                <a href="blog.html" class="dropdown-item text-timber-green">Nuestra Revista</a>
+                                <a href="single.html" class="dropdown-item text-timber-green">Sabías Qué…?</a>
                             </div>
                         </div>
-                    
-                    <a href="contact.html" class="nav-item text-timber-green nav-link">Contacto</a>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </div>
-</div>
 
     <div class="container-fluid bg-timber-green py-3">
   <div class="container">
@@ -149,80 +155,138 @@
 
     <!-- "Inicio del encabezado de la página". -->
      <!--Charly cambio de color-->
-    <div class="container-fluid bg-rich-black py-5">
-        <div class="container py-5">
-            <div class="row align-items-center py-4">
-                <div class="col-md-6 text-center text-md-left">
-                    <!--Charly cambio de color-->
-                    <h1 class="mb-4 mb-md-0 text-floral-white text-uppercase">Comunícate con Nosotros</h1>
-                </div>
-                <div class="col-md-6 text-center text-md-right">
-                    <div class="d-inline-flex align-items-center">
-                        <a class="btn btn-outline-primary" href="">Hogar</a>
-                        <i class="fas fa-angle-double-right text-juniper mx-2"></i>
-                        <a class="btn btn-outline-primary disabled" href="">Contáctanos</a>
-                    </div>
-                </div>
-            </div>
+   <!-- Sección de contacto -->
+<div class="container-fluid bg-light py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        
+        <!-- Encabezado -->
+        <div class="text-center mb-5">
+          <h2 class="text-dark text-uppercase">Comunícate con Nosotros</h2>
+          <p class="text-muted">Déjanos tus datos y te responderemos lo antes posible.</p>
         </div>
+        
+        <!-- Formulario -->
+<div class="p-5 shadow rounded bg-white">
+  <form id="contactForm" onsubmit="sendMail(event)">
+    
+    <div class="form-group mb-4">
+      <label for="name" class="form-label">Nombre completo</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="fas fa-user"></i></span>
+        <input type="text" class="form-control" id="name" placeholder="Ej. Damián Castillo" required />
+      </div>
     </div>
-    <!-- "Final del encabezado de la página". -->
-
-
-    <!-- "Inicio de la sección de contacto" -->
-    <div class="container-fluid bg-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5">
-                    <!--Charly cambio de color de fondo-->
-                    <div class="d-flex flex-column justify-content-center bg-basil h-100 p-5">
-                        <div class="d-inline-flex border border-secondary p-4 mb-4">
-                            <h1 class="flaticon-email font-weight-normal text-shamrock m-0 mr-3"></h1>
-                            <div class="d-flex flex-column">
-                                <h4>Envíanos un correo</h4>
-                                <p class="m-0 text-white">MOMEDPROYECTOS@gmail.com</p>
-                            </div>
-                        </div>
-                        <!--Logo Whatsapp-->
-                        <div class="d-inline-flex border border-secondary p-4">
-    <h1 class="fab fa-whatsapp font-weight-normal text-shamrock m-0 mr-3" style="font-size: 3rem;"></h1>
-    <div class="d-flex flex-column">
-        <h4>Contactanos</h4>
-        <p class="m-0 text-white">442 3440411-442 3451559</p>
+    
+    <div class="form-group mb-4">
+      <label for="email" class="form-label">Correo electrónico</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+        <input type="email" class="form-control" id="email" placeholder="ejemplo@correo.com" required />
+      </div>
     </div>
+    
+    <div class="form-group mb-4">
+      <label for="subject" class="form-label">Tema de consulta</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="fas fa-tag"></i></span>
+        <input type="text" class="form-control" id="subject" placeholder="Cotización, dudas, soporte..." required />
+      </div>
+    </div>
+    
+    <div class="form-group mb-4">
+      <label for="message" class="form-label">Tu mensaje</label>
+      <textarea class="form-control" id="message" rows="5" placeholder="Escribe aquí tu mensaje..." required></textarea>
+    </div>
+    
+    <!-- Agregado div para mostrar estado del envío -->
+    <div id="statusMessage" class="mb-3" style="display: none;"></div>
+    
+    <button class="btn btn-primary w-100 py-3" type="submit" id="sendMessageButton">
+      <i class="fas fa-paper-plane mr-2"></i> <span id="buttonText">Enviar Mensaje</span>
+    </button>
+    
+  </form>
 </div>
-                    </div>
-                </div>
-                <div class="col-lg-7 mb-5 my-lg-5 py-5 pl-lg-5">
-                    <div class="contact-form">
-                        <div id="success"></div>
-                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
-                            <div class="control-group">
-                                <input type="text" class="form-control p-4" id="name" placeholder="Tu Nombre" required="required" data-validation-required-message="Please enter your name" />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="control-group">
-                                <input type="email" class="form-control p-4" id="email" placeholder="Tu Correo Electrónico" required="required" data-validation-required-message="Please enter your email" />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="control-group">
-                                <input type="text" class="form-control p-4" id="subject" placeholder="Asunto" required="required" data-validation-required-message="Please enter a subject" />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="control-group">
-                                <textarea class="form-control p-4" rows="6" id="message" placeholder="Mensaje" required="required" data-validation-required-message="Please enter your message"></textarea>
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div>
-                                <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">Enviar Mensaje</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+let isSubmitting = false;
+
+// Inicializar EmailJS con tu Public Key
+emailjs.init("dvZUmksYNxDoLnlcH"); // Reemplaza con tu Public Key de EmailJS
+
+function sendMail(event) {
+  event.preventDefault();
+  
+  if (isSubmitting) {
+    return false;
+  }
+  
+  const button = document.getElementById('sendMessageButton');
+  const buttonText = document.getElementById('buttonText');
+  const statusMessage = document.getElementById('statusMessage');
+  
+  // Obtener datos del formulario
+  const formData = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    subject: document.getElementById('subject').value,
+    message: document.getElementById('message').value
+  };
+  
+  // Validar campos
+  if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+    statusMessage.innerHTML = '<div class="alert alert-danger">Por favor completa todos los campos</div>';
+    statusMessage.style.display = 'block';
+    return false;
+  }
+  
+  isSubmitting = true;
+  button.disabled = true;
+  buttonText.textContent = 'Enviando...';
+  statusMessage.style.display = 'none';
+  
+  // Parámetros para el template de EmailJS
+  const templateParams = {
+    to_email: 'momedproyectos@gmail.com',
+    from_name: formData.name,
+    from_email: formData.email,
+    subject: formData.subject,
+    message: formData.message,
+    reply_to: formData.email
+  };
+  
+  // Enviar email usando EmailJS
+  emailjs.send('service_9xchf9h', 'template_p4g68ep', templateParams)
+    .then(function(response) {
+      console.log('Email enviado exitosamente:', response);
+      statusMessage.innerHTML = '<div class="alert alert-success"><i class="fas fa-check-circle mr-2"></i>¡Mensaje enviado correctamente! Te responderemos pronto a ' + formData.email + '</div>';
+      document.getElementById('contactForm').reset();
+    })
+    .catch(function(error) {
+      console.error('Error al enviar email:', error);
+      statusMessage.innerHTML = '<div class="alert alert-danger"><i class="fas fa-exclamation-triangle mr-2"></i>Error al enviar el mensaje. Por favor inténtalo de nuevo o contáctanos directamente.</div>';
+    })
+    .finally(function() {
+      isSubmitting = false;
+      button.disabled = false;
+      buttonText.textContent = 'Enviar Mensaje';
+      statusMessage.style.display = 'block';
+    });
+  
+  return false;
+}
+</script>
+        
+      </div>
     </div>
+  </div>
+</div>
+
     <!-- "Inicio de la sección de contacto" -->
+
 
 
     <!-- "Inicio del pie de página". -->
@@ -256,42 +320,50 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <!--Charly cambio de color-->
-                <h4 class="text-shamrock mb-4">Accesos Directos</h4>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Nuestros Servicios</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Nuestros Proyectos</a>
-                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
-                </div>
+                 <h4 class="text-shamrock mb-4">Accesos Directos</h4>
+<div class="d-flex flex-column justify-content-start">
+    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+    <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
+    <a class="text-white mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i>Nuestros Servicios</a>
+    <a class="text-white mb-2" href="project.html"><i class="fa fa-angle-right mr-2"></i>Nuestros Proyectos</a>
+    <a class="text-white" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+</div>
+
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-                <!--Charly cambio de color-->
+                <!--Charly agregado del color-->
                 <h4 class="text-shamrock mb-4">Secciones Populares</h4>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Nuestros Servicios</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Nuestros Proyectos</a>
-                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
-                </div>
-            </div>
+<div class="d-flex flex-column justify-content-start">
+    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+    <a class="text-white mb-2" href="filtros.html"><i class="fa fa-angle-right mr-2"></i>Diseñame</a>
+    <a class="text-white mb-2" href="single.html"><i class="fa fa-angle-right mr-2"></i>Sabías Qué…?</a>
+    <a class="text-white mb-2" href="project.html"><i class="fa fa-angle-right mr-2"></i>Nuestros Proyectos</a>
+    <a class="text-white" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+</div>
+</div>
+
+<!--Inicio de comentarios-->
             <div class="col-lg-3 col-md-6 mb-5">
-                <!--Charly cambio de color-->
-                <h4 class="text-shamrock mb-4">Conéctate con Nosotros</h4>
-                <form action="">
+                <!--Charly agregado del color-->
+                <h4 class="text-shamrock mb-4">Déjanos tu opinión</h4>
+                <!-- Agregado id al formulario y corregido el tipo de input para comentario -->
+                <form id="comentarios-form">
                     <div class="form-group">
-                        <input type="text" class="form-control border-0" placeholder="Tu Nombre" required="required" />
+                        <input type="text" name="nombre" class="form-control border-0" placeholder="Nombre Completo" required="required" />
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control border-0" placeholder="Tu Correo Electrónico" required="required" />
+                        <!-- Cambiado de type="email" a textarea para comentarios -->
+                        <textarea name="comentario" class="form-control border-0" placeholder="Escribe tu comentario aquí..." rows="4" required="required"></textarea>
                     </div>
+                    <!-- Eliminado campo de email según solicitud del usuario -->
                     <div>
-                        <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Enviar ahora</button>
+                        <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Enviar</button>
                     </div>
                 </form>
             </div>
         </div>
+<!--Fin de los comentarios-->
+
         <div class="container border-top border-secondary pt-5">
             <p class="m-0 text-center text-white">
                 &copy; <a class="text-white font-weight-bold" href="#">MOMED</a>. Todos los derechos reservados.
@@ -315,23 +387,23 @@
     <script src="lib/lightbox/js/lightbox.min.js"></script>
 
     <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
+    <!-- <script src="mail/jqBootstrapValidation.min.js"></script> -->
+    <!-- <script src="mail/contact.js"></script> -->
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 
-    <!-- Musica de Fondo Playlist mejorado por Charly -->
+    <!--Inicio de Musica de Fondo Playlist mejorado por Charly -->
     <audio id="musicaFondo" autoplay style="display: none;">
-    </audio>
+</audio>
 
-    <button onclick="toggleAudio()" class="musica-banner">
-        🔊Música
-    </button>
+<button onclick="toggleAudio()" class="musica-banner" id="botonMusica">
+    🔊 Música
+</button>
 
-    <script>
-        // Aqui se ponen las canciones 
-        const canciones = [ 
+<script>
+    // Aqui se ponen las canciones 
+    const canciones = [
             "Musica/Give Me a Kiss.mp3",
             "Musica/Hunting.mp3", 
             "Musica/I know.mp3",
@@ -353,32 +425,97 @@
             "Musica/Withering.mp3",
             "Musica/Coming Home.mp3",
             "Musica/Father Ocean.mp3"
-        ];
+    ];
 
-        const audio = document.getElementById('musicaFondo');
-        let isPlaying = true;
-        let cancionActual = 0;
+    const audio = document.getElementById('musicaFondo');
+    const botonMusica = document.getElementById('botonMusica');
+    let isPlaying = false;
+    let cancionActual = 0;
 
-        // Carga la primera canción
+    function iniciarMusicaAutomatica() {
         audio.src = canciones[cancionActual];
-
-        // Cuando termine una canción, se reproduce la siguiente automáticamente
-        audio.addEventListener('ended', function() {
-            cancionActual = (cancionActual + 1) % canciones.length; // Vuelve al inicio cuando termine la lista
-            audio.src = canciones[cancionActual];
-            audio.play(); // Reproduce automáticamente la siguiente cancion
-        });
-
-        function toggleAudio() {
-            if (isPlaying) {
-                audio.pause();
-                event.target.innerText = "🔇Mute";
-            } else {
-                audio.play();
-                event.target.innerText = "🔊Música";
-            }
-            isPlaying = !isPlaying;
+        audio.volume = 1.0; // Volumen máximo
+        
+        // Intenta reproducir inmediatamente
+        const playPromise = audio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                isPlaying = true;
+                console.log("[v0] Música iniciada automáticamente al cargar");
+            }).catch(error => {
+                // Si falla, intenta de nuevo en el primer click
+                document.addEventListener('click', function() {
+                    audio.play().then(() => {
+                        isPlaying = true;
+                    });
+                }, { once: true });
+            });
         }
+    }
+
+    window.addEventListener('load', iniciarMusicaAutomatica);
+    // También intentar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', iniciarMusicaAutomatica);
+
+    // Cuando termine una canción, se reproduce la siguiente automáticamente
+    audio.addEventListener('ended', function() {
+        cancionActual = (cancionActual + 1) % canciones.length;
+        audio.src = canciones[cancionActual];
+        audio.play();
+        console.log("[v0] Cambiando a la siguiente canción:", canciones[cancionActual]);
+    });
+
+    function toggleAudio() {
+        if (isPlaying) {
+            audio.pause();
+            botonMusica.innerText = "🔇 Mute";
+        } else {
+            audio.play().then(() => {
+                botonMusica.innerText = "🔊 Música";
+            });
+        }
+        isPlaying = !isPlaying;
+    }
+
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .musica-banner {
+            transition: all 0.3s ease;
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+<!--Fin de la reproduccion de Musica-->
+ <!-- Script para manejar el envío de comentarios con EmailJS -->
+    <script>
+        document.getElementById('comentarios-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Obtener los datos del formulario
+            const formData = new FormData(this);
+            const templateParams = {
+                from_name: formData.get('nombre'),
+                message: formData.get('comentario'),
+                fecha: new Date().toLocaleDateString('es-ES')
+            };
+            
+            // Enviar email usando EmailJS
+            emailjs.send('service_uovpo9g', 'template_q54exgf', templateParams)
+                .then(function(response) {
+                    alert('¡Comentario enviado exitosamente!');
+                    document.getElementById('comentarios-form').reset();
+                }, function(error) {
+                    alert('Error al enviar el comentario. Por favor intenta de nuevo.');
+                    console.error('Error:', error);
+                });
+        });
     </script>
+
 </body>
 </html>
