@@ -383,7 +383,6 @@
     </div>
   </div>
 </div>
-
             <!-- Aquí van tus items del carrusel -->
             
           </div>
@@ -392,10 +391,7 @@
     </div>
   </div>
 </div>
-
-
-                            <!-- Codigo de Iconos -->
-                            
+                            <!-- Codigo de Iconos -->           
                         </div>
                     </div>
                 </div>
@@ -405,20 +401,173 @@
     <!-- Final de Servicios -->
 
     <!--Apartado Editor Visual-->
+   <!--Apartado Editor Visual-->
 
-<!-- Sección: Editor de Filtros -->
-<section class="py-5 bg-light text-center">
+<!-- Sección: Editor de Interiores -->
+<section class="editor-section py-5">
   <div class="container">
-    <h2 class="mb-3">Deja volar tu imaginacion en nuestro editior de interiores y paredes</h2>
-    <p class="mb-4; text-dark">Déjanos sorprenderte con un diseño hecho a tu medida.</p>
-    <img src="img/Editor simulador.gif" alt="Residencial6" style="height: 250px;">
-    <br></br>
-     <a href="filtros.html" class="text-center mt-5 btn btn-primary px-5 py-3 shadow-lg" style="background: #03ac13; border: none; border-radius: 50px; font-weight: bold; transition: 0.3s;">
-  Haz clic aquí
-</a>
-    </a>
+    <div class="editor-card">
+      <div class="row g-4 align-items-center">
+        <!-- Texto -->
+        <div class="col-lg-6">
+          <span class="eyebrow">Herramienta interactiva</span>
+          <h2 class="editor-title">Deja volar tu imaginación en nuestro <span class="highlight">editor de interiores y paredes</span></h2>
+          <p class="editor-subtitle">
+            Déjanos sorprenderte con un diseño hecho a tu medida. Prueba colores, texturas y estilos en segundos.
+          </p>
+
+          <ul class="editor-benefits">
+            <li>Prueba paletas de color en tiempo real</li>
+            <li>Simula acabados en muros y muebles</li>
+            <li>Guarda y comparte tus diseños</li>
+          </ul>
+
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a href="filtros.html" class="btn-cta">Abrir editor</a>
+            <a href="#galeria" class="btn-ghost">Ver ejemplos</a>
+          </div>
+        </div>
+
+        <!-- Visual -->
+        <div class="col-lg-6">
+          <div class="editor-media">
+            <img src="img/Editor simulador.gif" alt="Simulador de interiores" class="img-fluid">
+            <div class="media-badge">Demo en vivo</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+<style>
+  /* base */
+  .editor-section{
+    background:#f7fbf9; /* fondo claro, sin degradados */
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  }
+
+  /* tarjeta principal */
+  .editor-card{
+    background:#fff;
+    border:1px solid #e8f3ef;
+    border-radius:24px;
+    padding:32px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.04);
+  }
+
+  /* encabezados */
+  .eyebrow{
+    display:inline-block;
+    font-size:.85rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:#059669;
+    background:#e8faf2;
+    border:1px solid #c8f1e0;
+    padding:.30rem .6rem;
+    border-radius:999px;
+    margin-bottom:.75rem;
+    font-weight:700;
+  }
+  .editor-title{
+    font-weight: 800;
+    line-height:1.15;
+    color:#0f172a;
+    margin-bottom:.5rem;
+  }
+  .editor-title .highlight{ color:#059669; }
+  .editor-subtitle{
+    color:#334155;
+    margin: 0 0 1rem 0;
+    font-size:1.05rem;
+  }
+
+  /* lista de beneficios */
+  .editor-benefits{
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+  .editor-benefits li{
+    position:relative;
+    padding-left:28px;
+    margin:.5rem 0;
+    color:#0f172a;
+    font-weight:600;
+  }
+  .editor-benefits li::before{
+    content:"✔";
+    position:absolute;
+    left:0;
+    top:2px;
+    font-weight:800;
+    color:#10b981;
+  }
+
+  /* botones (sólidos, sin degradado) */
+  .btn-cta{
+    display:inline-block;
+    padding:.85rem 1.5rem;
+    border-radius:999px;
+    background:#10b981 !important;   /* color sólido */
+    color:#fff !important;
+    border:none;
+    font-weight:800;
+    text-decoration:none;
+    transition:transform .15s ease, box-shadow .2s ease, background-color .2s ease;
+    box-shadow:0 8px 20px rgba(16,185,129,.25);
+  }
+  .btn-cta:hover{ background:#059669 !important; transform:translateY(-1px); }
+
+  .btn-ghost{
+    display:inline-block;
+    padding:.85rem 1.5rem;
+    border-radius:999px;
+    border:2px solid #10b981;
+    background:transparent;
+    color:#0f172a;
+    font-weight:800;
+    text-decoration:none;
+    transition:background-color .2s ease, color .2s ease, transform .15s ease;
+  }
+  .btn-ghost:hover{ background:#10b981; color:#fff; transform:translateY(-1px); }
+
+  /* media (imagen/gif) */
+  .editor-media{
+    position:relative;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid #e5f3ee;
+    box-shadow:0 12px 28px rgba(0,0,0,.06);
+  }
+  .editor-media img{
+    display:block;
+    width:100%;
+    height:auto;
+  }
+  .media-badge{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:#111827;
+    color:#fff;
+    font-size:.8rem;
+    padding:.35rem .6rem;
+    border-radius:999px;
+    opacity:.9;
+  }
+
+  /* espacios responsivos */
+  @media (min-width: 992px){
+    .editor-title{ font-size:2.1rem; }
+  }
+  @media (max-width: 991.98px){
+    .editor-card{ padding:24px; }
+    .editor-title{ font-size:1.8rem; }
+  }
+</style>
+<!--Fin del editor-->
 
 
 
@@ -799,13 +948,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-
-
-
-    
+    </div>    
     <!-- Testimonial End -->
 
 
