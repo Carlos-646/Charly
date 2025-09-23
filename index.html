@@ -1226,14 +1226,15 @@
 
     function iniciarMusica() {
         audio.src = canciones[cancionActual];
-        audio.volume = 0;        // empieza en silencio
+        audio.volume = 0;    // empieza en silencio
         audio.muted = false;
+
         audio.play().then(() => {
             isPlaying = true;
             botonMusica.innerText = "🔊 " + obtenerNombreCancion();
             botonMusica.classList.add('playing');
 
-            // subir volumen gradualmente después de 1 segundo
+            // Subir volumen gradualmente después de 1 segundo
             setTimeout(() => {
                 let v = 0;
                 const fade = setInterval(() => {
@@ -1243,10 +1244,10 @@
                         v += 0.05;
                         audio.volume = v;
                     }
-                }, 100);
-            }, 1000);
+                }, 100); // cada 100ms aumenta volumen
+            }, 1000); // espera 1 segundo antes de empezar el fade
         }).catch(err => {
-            console.log("⚠️ El navegador bloqueó el autoplay con sonido directo:", err);
+            console.log("⚠️ El navegador bloqueó el autoplay directo:", err);
         });
     }
 
@@ -1256,6 +1257,7 @@
         return nombre.length > 20 ? nombre.substring(0, 20) + '...' : nombre;
     }
 
+    // Cuando termine una canción, pasa a la siguiente
     audio.addEventListener('ended', function() {
         cancionActual = (cancionActual + 1) % canciones.length;
         audio.src = canciones[cancionActual];
@@ -1310,4 +1312,5 @@
 
 </body>
 </html>
+
 
