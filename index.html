@@ -1187,7 +1187,7 @@
     <!--Inicio de Musica de Fondo Playlist mejorado por Charly -->
 <link rel="stylesheet" href="style.css">
 
-<audio id="musicaFondo" autoplay loop preload="auto" muted="false" style="display: none;">
+<audio id="musicaFondo" autoplay loop preload="auto" muted style="display: none;">
 </audio>
 
 <button onclick="toggleAudio()" class="musica-banner" id="botonMusica">
@@ -1195,7 +1195,6 @@
 </button>
 
 <script>
-    // Aqui se ponen las canciones 
     const canciones = [
         "Musica/Father Ocean.mp3",
         "Musica/Coming Home.mp3", 
@@ -1225,64 +1224,30 @@
     let isPlaying = false;
     let cancionActual = 0;
 
-    function iniciarMusicaInmediatamente() {
-        // Configurar la primera canción inmediatamente
+    function iniciarMusica() {
         audio.src = canciones[cancionActual];
-        audio.volume = 0.7;
-        audio.autoplay = true;
+        audio.volume = 0;        // empieza en silencio
         audio.muted = false;
-        
-        // Forzar carga y reproducción inmediata
-        audio.load();
-        
-        // Múltiples intentos inmediatos de reproducción
-        const intentarReproducir = async () => {
-            try {
-                // Intento 1: Reproducción directa
-                const playPromise = audio.play();
-                if (playPromise !== undefined) {
-                    await playPromise;
-                    isPlaying = true;
-                    botonMusica.innerText = "🔊 " + obtenerNombreCancion();
-                    botonMusica.classList.add('playing');
-                    return true;
-                }
-            } catch (error) {
-                // Intento 2: Con volumen bajo inicialmente
-                try {
-                    audio.volume = 0.1;
-                    await audio.play();
-                    // Subir volumen gradualmente
-                    setTimeout(() => { audio.volume = 0.7; }, 100);
-                    isPlaying = true;
-                    botonMusica.innerText = "🔊 " + obtenerNombreCancion();
-                    botonMusica.classList.add('playing');
-                    return true;
-                } catch (error2) {
-                    // Intento 3: Forzar con setAttribute
-                    audio.setAttribute('autoplay', 'autoplay');
-                    audio.setAttribute('muted', 'false');
-                    try {
-                        await audio.play();
-                        isPlaying = true;
-                        botonMusica.innerText = "🔊 " + obtenerNombreCancion();
-                        botonMusica.classList.add('playing');
-                        return true;
-                    } catch (error3) {
-                        console.log("Autoplay bloqueado por el navegador");
-                        return false;
+        audio.play().then(() => {
+            isPlaying = true;
+            botonMusica.innerText = "🔊 " + obtenerNombreCancion();
+            botonMusica.classList.add('playing');
+
+            // subir volumen gradualmente después de 1 segundo
+            setTimeout(() => {
+                let v = 0;
+                const fade = setInterval(() => {
+                    if (v >= 0.7) {
+                        clearInterval(fade);
+                    } else {
+                        v += 0.05;
+                        audio.volume = v;
                     }
-                }
-            }
-        };
-        
-        // Ejecutar inmediatamente
-        intentarReproducir();
-        
-        // Reintentos adicionales
-        setTimeout(() => intentarReproducir(), 10);
-        setTimeout(() => intentarReproducir(), 50);
-        setTimeout(() => intentarReproducir(), 100);
+                }, 100);
+            }, 1000);
+        }).catch(err => {
+            console.log("⚠️ El navegador bloqueó el autoplay con sonido directo:", err);
+        });
     }
 
     function obtenerNombreCancion() {
@@ -1291,67 +1256,12 @@
         return nombre.length > 20 ? nombre.substring(0, 20) + '...' : nombre;
     }
 
-    function esperarInteraccionUsuario() {
-        const activarMusica = async () => {
-            try {
-                await audio.play();
-                isPlaying = true;
-                botonMusica.innerText = "🔊 " + obtenerNombreCancion();
-                botonMusica.classList.add('playing');
-                console.log("[v0] Música activada por interacción del usuario!");
-                
-                // Remover todos los event listeners
-                document.removeEventListener('click', activarMusica);
-                document.removeEventListener('keydown', activarMusica);
-                document.removeEventListener('touchstart', activarMusica);
-                document.removeEventListener('mousemove', activarMusica);
-                document.removeEventListener('scroll', activarMusica);
-            } catch (error) {
-                console.log("[v0] Error al activar música:", error);
-            }
-        };
-        
-        // Escuchar múltiples tipos de interacción
-        document.addEventListener('click', activarMusica, { once: true });
-        document.addEventListener('keydown', activarMusica, { once: true });
-        document.addEventListener('touchstart', activarMusica, { once: true });
-        document.addEventListener('mousemove', activarMusica, { once: true });
-        document.addEventListener('scroll', activarMusica, { once: true });
-    }
-
-    // Ejecutar tan pronto como sea posible
-    iniciarMusicaInmediatamente();
-    
-    // Cuando el DOM esté listo
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', iniciarMusicaInmediatamente);
-    }
-    
-    // Cuando la ventana termine de cargar
-    window.addEventListener('load', iniciarMusicaInmediatamente);
-    
-    // Intentos adicionales con delays mínimos
-    setTimeout(iniciarMusicaInmediatamente, 1);
-    setTimeout(iniciarMusicaInmediatamente, 10);
-    setTimeout(iniciarMusicaInmediatamente, 25);
-
-    // Cuando termine una canción, reproduce la siguiente automáticamente
     audio.addEventListener('ended', function() {
         cancionActual = (cancionActual + 1) % canciones.length;
         audio.src = canciones[cancionActual];
         audio.play().then(() => {
             botonMusica.innerText = "🔊 " + obtenerNombreCancion();
         });
-        console.log("[v0] Cambiando a:", obtenerNombreCancion());
-    });
-
-    // Manejo de errores de carga
-    audio.addEventListener('error', function() {
-        console.log("[v0] Error cargando:", canciones[cancionActual]);
-        // Salta a la siguiente canción si hay error
-        cancionActual = (cancionActual + 1) % canciones.length;
-        audio.src = canciones[cancionActual];
-        audio.play();
     });
 
     function toggleAudio() {
@@ -1367,8 +1277,11 @@
         }
         isPlaying = !isPlaying;
     }
+
+    // Inicia apenas carga la página
+    window.addEventListener('load', iniciarMusica);
 </script>
-<!--Fin de la reproduccion de Musica-->
+    <!--Fin de la reproduccion de Musica-->
     
     <!-- Script para manejar el envío de comentarios con EmailJS -->
     <script>
@@ -1397,3 +1310,4 @@
 
 </body>
 </html>
+
