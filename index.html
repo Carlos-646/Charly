@@ -1187,7 +1187,7 @@
     <!--Inicio de Musica de Fondo Playlist mejorado por Charly -->
 <link rel="stylesheet" href="style.css">
 
-<audio id="musicaFondo" autoplay loop preload="auto" muted style="display: none;">
+<audio id="musicaFondo" loop preload="auto" muted style="display: none;">
 </audio>
 
 <button onclick="toggleAudio()" class="musica-banner" id="botonMusica">
@@ -1234,20 +1234,18 @@
             botonMusica.innerText = "🔊 " + obtenerNombreCancion();
             botonMusica.classList.add('playing');
 
-            // Subir volumen gradualmente después de 1 segundo
-            setTimeout(() => {
-                let v = 0;
-                const fade = setInterval(() => {
-                    if (v >= 0.7) {
-                        clearInterval(fade);
-                    } else {
-                        v += 0.05;
-                        audio.volume = v;
-                    }
-                }, 100); // cada 100ms aumenta volumen
-            }, 1000); // espera 1 segundo antes de empezar el fade
+            // Subir volumen gradualmente en ~1s
+            let v = 0;
+            const fade = setInterval(() => {
+                if (v >= 0.7) {
+                    clearInterval(fade);
+                } else {
+                    v += 0.05;
+                    audio.volume = v;
+                }
+            }, 100);
         }).catch(err => {
-            console.log("⚠️ El navegador bloqueó el autoplay directo:", err);
+            console.log("⚠️ Autoplay bloqueado:", err);
         });
     }
 
@@ -1280,9 +1278,19 @@
         isPlaying = !isPlaying;
     }
 
-    // Inicia apenas carga la página
-    window.addEventListener('load', iniciarMusica);
+    // 🎵 Activar música en la primera interacción (scroll, clic o touch)
+    function activarMusicaConInteraccion() {
+        iniciarMusica();
+        document.removeEventListener('scroll', activarMusicaConInteraccion);
+        document.removeEventListener('click', activarMusicaConInteraccion);
+        document.removeEventListener('touchstart', activarMusicaConInteraccion);
+    }
+
+    document.addEventListener('scroll', activarMusicaConInteraccion, { once: true });
+    document.addEventListener('click', activarMusicaConInteraccion, { once: true });
+    document.addEventListener('touchstart', activarMusicaConInteraccion, { once: true });
 </script>
+
     <!--Fin de la reproduccion de Musica-->
     
     <!-- Script para manejar el envío de comentarios con EmailJS -->
