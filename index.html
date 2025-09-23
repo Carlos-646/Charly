@@ -1185,11 +1185,13 @@
     <script src="js/main.js"></script>
 
     <!--Inicio de Musica de Fondo Playlist mejorado por Charly -->
-    <audio id="musicaFondo" autoplay style="display: none;">
+    <link rel="stylesheet" href="style.css">
+
+<audio id="musicaFondo" autoplay style="display: none;">
 </audio>
 
 <button onclick="toggleAudio()" class="musica-banner" id="botonMusica">
-    🔊 Música
+    🔊Música
 </button>
 
 <script>
@@ -1225,62 +1227,87 @@
 
     function iniciarMusicaAutomatica() {
         audio.src = canciones[cancionActual];
-        audio.volume = 1.0; // Volumen máximo
+        audio.volume = 0.7; // Volumen al 70% para mejor experiencia
         
+        // Múltiples intentos de reproducción automática
+        const intentarReproducir = () => {
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    isPlaying = true;
+                    botonMusica.innerText = "🔊 " + obtenerNombreCancion();
+                    console.log("[v0] Música iniciada automáticamente");
+                }).catch(error => {
+                    console.log("[v0] Reproducción automática bloqueada, esperando interacción del usuario");
+                    // Si falla, espera cualquier interacción del usuario
+                    const activarConClick = () => {
+                        audio.play().then(() => {
+                            isPlaying = true;
+                            botonMusica.innerText = "🔊 " + obtenerNombreCancion();
+                        });
+                        document.removeEventListener('click', activarConClick);
+                        document.removeEventListener('keydown', activarConClick);
+                        document.removeEventListener('touchstart', activarConClick);
+                    };
+                    
+                    document.addEventListener('click', activarConClick);
+                    document.addEventListener('keydown', activarConClick);
+                    document.addEventListener('touchstart', activarConClick);
+                });
+            }
+        };
+
         // Intenta reproducir inmediatamente
-        const playPromise = audio.play();
+        intentarReproducir();
         
-        if (playPromise !== undefined) {
-            playPromise.then(() => {
-                isPlaying = true;
-                console.log("[v0] Música iniciada automáticamente al cargar");
-            }).catch(error => {
-                // Si falla, intenta de nuevo en el primer click
-                document.addEventListener('click', function() {
-                    audio.play().then(() => {
-                        isPlaying = true;
-                    });
-                }, { once: true });
-            });
-        }
+        // Si no funciona, intenta después de un pequeño delay
+        setTimeout(intentarReproducir, 100);
+        setTimeout(intentarReproducir, 500);
     }
 
+    function obtenerNombreCancion() {
+        const nombreCompleto = canciones[cancionActual];
+        const nombre = nombreCompleto.split('/').pop().replace('.mp3', '');
+        return nombre.length > 20 ? nombre.substring(0, 20) + '...' : nombre;
+    }
+
+    // Iniciar cuando la página esté completamente cargada
     window.addEventListener('load', iniciarMusicaAutomatica);
-    // También intentar cuando el DOM esté listo
     document.addEventListener('DOMContentLoaded', iniciarMusicaAutomatica);
 
-    // Cuando termine una canción, se reproduce la siguiente automáticamente
+    // Cuando termine una canción, reproduce la siguiente automáticamente
     audio.addEventListener('ended', function() {
         cancionActual = (cancionActual + 1) % canciones.length;
         audio.src = canciones[cancionActual];
+        audio.play().then(() => {
+            botonMusica.innerText = "🔊 " + obtenerNombreCancion();
+        });
+        console.log("[v0] Cambiando a:", obtenerNombreCancion());
+    });
+
+    // Manejo de errores de carga
+    audio.addEventListener('error', function() {
+        console.log("[v0] Error cargando:", canciones[cancionActual]);
+        // Salta a la siguiente canción si hay error
+        cancionActual = (cancionActual + 1) % canciones.length;
+        audio.src = canciones[cancionActual];
         audio.play();
-        console.log("[v0] Cambiando a la siguiente canción:", canciones[cancionActual]);
     });
 
     function toggleAudio() {
         if (isPlaying) {
             audio.pause();
-            botonMusica.innerText = "🔇 Mute";
+            botonMusica.innerText = "🔇Mute";
+            botonMusica.classList.remove('playing');
         } else {
             audio.play().then(() => {
-                botonMusica.innerText = "🔊 Música";
+                botonMusica.innerText = "🔊 " + obtenerNombreCancion();
+                botonMusica.classList.add('playing');
             });
         }
         isPlaying = !isPlaying;
     }
-
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .musica-banner {
-            transition: all 0.3s ease;
-        }
-    `;
-    document.head.appendChild(style);
 </script>
 
 <!--Fin de la reproduccion de Musica-->
