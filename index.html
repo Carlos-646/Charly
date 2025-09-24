@@ -1677,7 +1677,9 @@
     <script src="js/main.js"></script>
 
     <!--Inicio de Musica de Fondo Playlist mejorado por Charly -->
-    <audio id="musicaFondo" autoplay style="display: none;">
+<link rel="stylesheet" href="style.css">
+
+<audio id="musicaFondo" loop preload="auto" muted style="display: none;">
 </audio>
 
 <button onclick="toggleAudio()" class="musica-banner" id="botonMusica">
@@ -1685,7 +1687,6 @@
 </button>
 
 <script>
-    // Aqui se ponen las canciones 
     const canciones = [
         "Musica/Father Ocean.mp3",
         "Musica/Coming Home.mp3", 
@@ -1715,67 +1716,74 @@
     let isPlaying = false;
     let cancionActual = 0;
 
-    function iniciarMusicaAutomatica() {
+    function iniciarMusica() {
         audio.src = canciones[cancionActual];
-        audio.volume = 1.0; // Volumen máximo
-        
-        // Intenta reproducir inmediatamente
-        const playPromise = audio.play();
-        
-        if (playPromise !== undefined) {
-            playPromise.then(() => {
-                isPlaying = true;
-                console.log("[v0] Música iniciada automáticamente al cargar");
-            }).catch(error => {
-                // Si falla, intenta de nuevo en el primer click
-                document.addEventListener('click', function() {
-                    audio.play().then(() => {
-                        isPlaying = true;
-                    });
-                }, { once: true });
-            });
-        }
+        audio.volume = 0;    // empieza en silencio
+        audio.muted = false;
+
+        audio.play().then(() => {
+            isPlaying = true;
+            botonMusica.innerText = "🔊 " + obtenerNombreCancion();
+            botonMusica.classList.add('playing');
+
+            // Subir volumen gradualmente en ~1s
+            let v = 0;
+            const fade = setInterval(() => {
+                if (v >= 0.7) {
+                    clearInterval(fade);
+                } else {
+                    v += 0.05;
+                    audio.volume = v;
+                }
+            }, 100);
+        }).catch(err => {
+            console.log("⚠️ Autoplay bloqueado:", err);
+        });
     }
 
-    window.addEventListener('load', iniciarMusicaAutomatica);
-    // También intentar cuando el DOM esté listo
-    document.addEventListener('DOMContentLoaded', iniciarMusicaAutomatica);
+    function obtenerNombreCancion() {
+        const nombreCompleto = canciones[cancionActual];
+        const nombre = nombreCompleto.split('/').pop().replace('.mp3', '');
+        return nombre.length > 20 ? nombre.substring(0, 20) + '...' : nombre;
+    }
 
-    // Cuando termine una canción, se reproduce la siguiente automáticamente
+    // Cuando termine una canción, pasa a la siguiente
     audio.addEventListener('ended', function() {
         cancionActual = (cancionActual + 1) % canciones.length;
         audio.src = canciones[cancionActual];
-        audio.play();
-        console.log("[v0] Cambiando a la siguiente canción:", canciones[cancionActual]);
+        audio.play().then(() => {
+            botonMusica.innerText = "🔊 " + obtenerNombreCancion();
+        });
     });
 
     function toggleAudio() {
         if (isPlaying) {
             audio.pause();
-            botonMusica.innerText = "🔇 Mute";
+            botonMusica.innerText = "🔇 Pausado";
+            botonMusica.classList.remove('playing');
         } else {
             audio.play().then(() => {
-                botonMusica.innerText = "🔊 Música";
+                botonMusica.innerText = "🔊 " + obtenerNombreCancion();
+                botonMusica.classList.add('playing');
             });
         }
         isPlaying = !isPlaying;
     }
 
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .musica-banner {
-            transition: all 0.3s ease;
-        }
-    `;
-    document.head.appendChild(style);
+    // 🎵 Activar música en la primera interacción (scroll, clic o touch)
+    function activarMusicaConInteraccion() {
+        iniciarMusica();
+        document.removeEventListener('scroll', activarMusicaConInteraccion);
+        document.removeEventListener('click', activarMusicaConInteraccion);
+        document.removeEventListener('touchstart', activarMusicaConInteraccion);
+    }
+
+    document.addEventListener('scroll', activarMusicaConInteraccion, { once: true });
+    document.addEventListener('click', activarMusicaConInteraccion, { once: true });
+    document.addEventListener('touchstart', activarMusicaConInteraccion, { once: true });
 </script>
 
-<!--Fin de la reproduccion de Musica-->
+    <!--Fin de la reproduccion de Musica-->
     
     <!-- Script para manejar el envío de comentarios con EmailJS -->
     <script>
