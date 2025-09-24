@@ -1577,19 +1577,6 @@ END:VCALENDAR`;
 }
 </style>
 
-<!-- Script -->
-<script>
-  const backToTop = document.querySelector(".back-to-top");
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 200) {
-      backToTop.style.display = "flex";
-    } else {
-      backToTop.style.display = "none";
-    }
-  });
-</script>
-Brayan Sánchez
-9:59 p.m.
 <!-- Volver Arriba -->
 <a href="#" class="back-to-top">
   <i class="fas fa-angle-double-up"></i>
@@ -1613,23 +1600,25 @@ Brayan Sánchez
   text-decoration: none;
   z-index: 999;
   cursor: pointer;
-}
-
-/* Oculto hasta hacer scroll */
-.back-to-top {
-  display: none;
+  display: none; /* Oculto hasta hacer scroll */
 }
 </style>
 
 <!-- Script -->
 <script>
   const backToTop = document.querySelector(".back-to-top");
+
   window.addEventListener("scroll", () => {
     if (window.scrollY > 200) {
       backToTop.style.display = "flex";
     } else {
       backToTop.style.display = "none";
     }
+  });
+
+  backToTop.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 </script>
     <!--Inicio de Musica de Fondo Playlist mejorado por Charly -->
