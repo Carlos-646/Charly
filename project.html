@@ -34,10 +34,13 @@
             // Inicializar EmailJS con tu Public Key
             emailjs.init("fBsDQAPpy2ke_o-zr"); // Reemplaza con tu Public Key de EmailJS
         })();
+        
     </script>
 
 </head>
 <body>
+
+    
     <!-- "Inicio de la barra superior". -->
     <div class="container-fluid bg-rich-black py-3">
         <div class="container">
@@ -183,129 +186,1079 @@
             </div>
         </div>
     </div>
-    <!-- "Final del encabezado de la página". -->
+
+<!-- "Final del encabezado de la página". -->
+
+
+
+
 
 <!-- "Inicio de la sección de casas" -->
-<!-- Reemplazando sección de casas con diseño moderno de casasenstock.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casas en Stock</title>
+  <style>
+    /* ----- Maquetación general ----- */
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f8fafc}
+    .section-wrap{max-width:1150px;margin:0 auto;padding:48px 20px;}
+    .section-light{background:#f4f7ff;}
+    .section-space{padding-top:40px;padding-bottom:32px;}
+    .hr-space{height:40px}
 
-<!-- FONDO CLARO del encabezado -->
-<section class="section-light" style="background:#f4f7ff;">
-  <div class="section-wrap" style="max-width:1150px;margin:0 auto;padding:48px 20px;">
-    <div style="display:flex;justify-content:center;margin-bottom:18px;">
-      <div style="display:inline-flex;align-items:center;gap:8px;background:#d1fae5;color:#047857;padding:8px 14px;border-radius:999px;font:600 14px/1 ui-sans-serif,system-ui;">
-        <span style="width:8px;height:8px;border-radius:50%;background:#10b981;display:inline-block;"></span>¡Disponibles Ahora!
+    /* ----- Header + badge ----- */
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:#d1fae5;color:#047857;padding:8px 14px;border-radius:999px;
+      font:600 14px/1 ui-sans-serif,system-ui; margin-bottom:18px;
+    }
+    .badge-dot{width:8px;height:8px;border-radius:50%;background:#10b981}
+    .h-title{
+      color:#0f172a;margin:0 0 10px;font-weight:800;letter-spacing:-.02em;
+      font-size:clamp(36px,5vw,56px); text-align:center;
+    }
+    .h-sub{
+      color:#64748b;font-size:clamp(16px,2vw,18.5px);
+      max-width:820px;margin:0 auto 28px;text-align:center;
+    }
+
+    /* ----- Stats (tres tarjetas) ----- */
+    .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:0 0 32px}
+    @media (max-width:900px){.stats-grid{grid-template-columns:1fr}}
+    .stat{
+      background:#fff;border:1px solid #e5e7eb;border-radius:14px;
+      box-shadow:0 10px 24px rgba(0,0,0,.06);padding:28px;text-align:center;
+    }
+    .stat .num{color:#059669;font-weight:800;font-size:28px;margin-bottom:4px}
+    .stat .lbl{color:#475569;font-weight:500}
+
+    /* ----- Grid de Casas ----- */
+    .cards-grid{display:grid;gap:32px;grid-template-columns:repeat(3,1fr);margin-bottom:48px}
+    @media (max-width:1024px){.cards-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:700px){.cards-grid{grid-template-columns:1fr}}
+
+    .card{
+      background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;
+      box-shadow:0 8px 22px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s;
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(0,0,0,.1)}
+    .card-media{position:relative}
+    .card-img{width:100%;height:220px;object-fit:cover;background:#e5e7eb}
+    .badge-top{
+      position:absolute;top:14px;padding:6px 12px;border-radius:999px;color:#fff;
+      font:600 13px/1 system-ui
+    }
+    .badge-left{left:14px} .badge-right{right:14px}
+    .badge-red{background:#ef4444} .badge-orange{background:#f59e0b} .badge-green{background:#10b981}
+
+    .card-body{padding:22px}
+    .card-title{margin:0 0 8px;font:700 20px/1.3 ui-sans-serif;color:#0f172a}
+    .card-desc{margin:0 0 16px;color:#64748b;font-size:15px}
+    .card-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+    .price{color:#059669;font-weight:800;font-size:24px}
+    .hint{color:#94a3b8;font-size:13.5px}
+    .btn{width:100%;border:0;border-radius:10px;padding:12px 16px;background:#059669;color:#fff;font-weight:700;cursor:pointer;transition:background .2s}
+    .btn:hover{background:#047857}
+
+    /* ----- Sección de urgencia (bloque verde) ----- */
+    .urgency{
+      background:linear-gradient(135deg,#0ea5a3 0%,#10b981 100%);
+      border-radius:16px;padding:42px 28px;text-align:center;
+      box-shadow:0 20px 40px rgba(0,0,0,.10)
+    }
+    .urgency h2{color:#fff;font-size:clamp(28px,3.5vw,40px);margin:0 0 10px;font-weight:800}
+    .urgency p{color:rgba(255,255,255,.92);font-size:clamp(16px,2.2vw,18px);max-width:760px;margin:0 auto 24px}
+    .urgency-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+    .urgency-card{
+      background:#fff;color:#111;border:1px solid #e5e7eb;border-radius:14px;
+      padding:14px 22px;min-width:240px;display:inline-flex;align-items:center;gap:10px;
+      font-weight:700;font-size:18px;box-shadow:0 6px 16px rgba(0,0,0,.08);transition:transform .2s, box-shadow .2s
+    }
+    .urgency-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.12)}
+  </style>
+</head>
+<body>
+
+  <!-- FONDO CLARO del encabezado -->
+  <section class="section-light">
+    <div class="section-wrap section-space">
+      <div style="display:flex;justify-content:center;margin-bottom:18px;"><div style="display:inline-flex;align-items:center;gap:8px;background:#d1fae5;color:#047857;padding:8px 14px;border-radius:999px;font:600 14px/1 ui-sans-serif,system-ui;"><span style="width:8px;height:8px;border-radius:50%;background:#10b981;display:inline-block;"></span>¡Disponibles Ahora!</div></div>
+
+      <h1 style="font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#0f172a;margin:0 0 10px;font-weight:800;letter-spacing:-.02em;font-size:clamp(36px,5vw,56px);text-align:center;">
+  Casas en <span style="color:#10b981;">Stock</span>
+</h1>
+
+      <p class="h-sub">
+  <p style="font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#64748b;font-size:18px;max-width:700px;margin:0 auto 28px;text-align:center;line-height:1.6;">
+  No pierdas la oportunidad de encontrar tu hogar ideal.<br>
+  Propiedades listas para entrega inmediata.
+</p>
+
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat"><div class="num">15+</div><div class="lbl">Casas Disponibles</div></div>
+        <div class="stat"><div class="num">24h</div><div class="lbl">Entrega Inmediata</div></div>
+        <div class="stat"><div class="num">100%</div><div class="lbl">Financiamiento</div></div>
       </div>
     </div>
+  </section>
 
-    <h1 style="font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#0f172a;margin:0 0 10px;font-weight:800;letter-spacing:-.02em;font-size:clamp(36px,5vw,56px);text-align:center;">
-      Casas en <span style="color:#10b981;">Stock</span>
-    </h1>
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casas en Venta</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      margin: 0;
+      color: #0f172a;
+    }
 
-    <p style="font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#64748b;font-size:18px;max-width:700px;margin:0 auto 28px;text-align:center;line-height:1.6;">
-      No pierdas la oportunidad de encontrar tu hogar ideal.<br>
-      Propiedades listas para entrega inmediata.
-    </p>
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
 
-    <div class="stats-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:0 0 32px">
-      <div class="stat" style="background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 10px 24px rgba(0,0,0,.06);padding:28px;text-align:center;">
-        <div class="num" style="color:#059669;font-weight:800;font-size:28px;margin-bottom:4px">15+</div>
-        <div class="lbl" style="color:#475569;font-weight:500">Casas Disponibles</div>
-      </div>
-      <div class="stat" style="background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 10px 24px rgba(0,0,0,.06);padding:28px;text-align:center;">
-        <div class="num" style="color:#059669;font-weight:800;font-size:28px;margin-bottom:4px">24h</div>
-        <div class="lbl" style="color:#475569;font-weight:500">Entrega Inmediata</div>
-      </div>
-      <div class="stat" style="background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 10px 24px rgba(0,0,0,.06);padding:28px;text-align:center;">
-        <div class="num" style="color:#059669;font-weight:800;font-size:28px;margin-bottom:4px">100%</div>
-        <div class="lbl" style="color:#475569;font-weight:500">Financiamiento</div>
-      </div>
-    </div>
-  </div>
-</section>
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
 
-<!-- Sección de Cards de Casas -->
-<section class="section-wrap" style="max-width:1100px;margin:0 auto;padding:40px 20px;">
-  <div class="cards-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:28px;">
+    .card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .05);
+      transition: transform .3s;
+    }
+    .card:hover { transform: translateY(-4px); }
+
+    .card-media {
+      position: relative;
+      height: 220px;
+      background: #e2e8f0;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .badge-top {
+      position: absolute;
+      top: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      color: #fff;
+      font: 600 13px/1 'Inter', sans-serif;
+    }
+
+    .badge-left { left: 14px; }
+    .badge-right { right: 14px; }
+    .badge-blue { background: #0ea5e9; }
+    .badge-orange { background: #f97316; }
+    .badge-green { background: #10b981; }
+
+    .card-body {
+      padding: 20px 22px 26px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      margin: 0 0 6px;
+      font-weight: 700;
+    }
+
+    .card-desc {
+      color: #64748b;
+      margin: 0 0 14px;
+      font-size: 15px;
+    }
+
+    .card-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .price {
+      color: #10b981;
+      font-weight: 800;
+      font-size: 20px;
+    }
+
+    .hint {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      background: #10b981;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s;
+    }
+
+    .btn:hover { background: #059669; }
+
+    /* ======= MODAL DE GALERÍA ======= */
+    .gallery-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 60px 20px;
+      overflow: auto;
+    }
+
+    .gallery-content {
+      background: #fff;
+      border-radius: 14px;
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px;
+      position: relative;
+    }
+
+    .gallery-content h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #0ea5e9;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .gallery-grid {
+      margin-top: 20px;
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="section-wrap">
+    <div class="cards-grid">
 
     <!-- Card AGUA -->
-    <article class="card" style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.05);transition:transform .3s;">
-      <div class="card-media" style="position:relative;height:220px;background:#e2e8f0;">
-        <img class="card-img" src="img/SALA AGUA.jpg" alt="Casa Elemento Agua" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <span class="badge-top badge-left" style="position:absolute;top:14px;left:14px;padding:6px 12px;border-radius:999px;color:#fff;font:600 13px/1 'Inter',sans-serif;background:#0ea5e9;">AGUA</span>
-        <span class="badge-top badge-right" style="position:absolute;top:14px;right:14px;padding:6px 12px;border-radius:999px;color:#fff;font:600 13px/1 'Inter',sans-serif;background:#10b981;">En Stock</span>
-      </div>
-      <div class="card-body" style="padding:20px 22px 26px;">
-        <h3 class="card-title" style="font-size:20px;margin:0 0 6px;font-weight:700;">Casa Elemento Agua</h3>
-        <p class="card-desc" style="color:#64748b;margin:0 0 14px;font-size:15px;">3 habitaciones • 2 baños • Vista al mar</p>
-        <div class="card-row" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
-          <span class="price" style="color:#10b981;font-weight:800;font-size:20px;">$320,000</span>
-          <span class="hint" style="color:#94a3b8;font-size:14px;">Ideal vacacional</span>
-        </div>
-        <div class="card-actions" style="display:flex;gap:10px;margin-top:10px;">
-          <button class="btn" onclick="openGallery('galeriaAgua')" style="display:inline-block;width:100%;text-align:center;background:#10b981;color:#fff;border:none;border-radius:10px;padding:12px 16px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;">Ver más</button>
-        </div>
-      </div>
-    </article>
-
-    <!-- Card FUEGO -->
-    <article class="card" style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.05);transition:transform .3s;">
-      <div class="card-media" style="position:relative;height:220px;background:#e2e8f0;">
-        <img class="card-img" src="img/VESUVIO 1.png" alt="Casa Elemento Fuego" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <span class="badge-top badge-left" style="position:absolute;top:14px;left:14px;padding:6px 12px;border-radius:999px;color:#fff;font:600 13px/1 'Inter',sans-serif;background:#f97316;">FUEGO</span>
-        <span class="badge-top badge-right" style="position:absolute;top:14px;right:14px;padding:6px 12px;border-radius:999px;color:#fff;font:600 13px/1 'Inter',sans-serif;background:#10b981;">En Stock</span>
-      </div>
-      <div class="card-body" style="padding:20px 22px 26px;">
-        <h3 class="card-title" style="font-size:20px;margin:0 0 6px;font-weight:700;">Casa Elemento Fuego</h3>
-        <p class="card-desc" style="color:#64748b;margin:0 0 14px;font-size:15px;">4 habitaciones • 3 baños • Terraza con asador</p>
-        <div class="card-row" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
-          <span class="price" style="color:#10b981;font-weight:800;font-size:20px;">$350,000</span>
-          <span class="hint" style="color:#94a3b8;font-size:14px;">Entrega inmediata</span>
-        </div>
-        <div class="card-actions" style="display:flex;gap:10px;margin-top:10px;">
-          <button class="btn" onclick="openGallery('galeriaFuego')" style="display:inline-block;width:100%;text-align:center;background:#10b981;color:#fff;border:none;border-radius:10px;padding:12px 16px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;">Ver más</button>
-        </div>
-      </div>
-    </article>
-
-    <!-- Card AIRE -->
-    <article class="card" style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.05);transition:transform .3s;">
-      <div class="card-media" style="position:relative;height:220px;background:#e2e8f0;">
-        <img class="card-img" src="img/SALA.jpeg" alt="Casa Elemento Aire" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <span class="badge-top badge-left" style="position:absolute;top:14px;left:14px;padding:6px 12px;border-radius:999px;color:#fff;font:600 13px/1 'Inter',sans-serif;background:#0ea5e9;">AIRE</span>
-        <span class="badge-top badge-right" style="position:absolute;top:14px;right:14px;padding:6px 12px;border-radius:999px;color:#fff;font:600 13px/1 'Inter',sans-serif;background:#10b981;">En Stock</span>
-      </div>
-      <div class="card-body" style="padding:20px 22px 26px;">
-        <h3 class="card-title" style="font-size:20px;margin:0 0 6px;font-weight:700;">Casa Elemento Aire</h3>
-        <p class="card-desc" style="color:#64748b;margin:0 0 14px;font-size:15px;">2 habitaciones • 2 baños • Terraza elevada</p>
-        <div class="card-row" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
-          <span class="price" style="color:#10b981;font-weight:800;font-size:20px;">$310,000</span>
-          <span class="hint" style="color:#94a3b8;font-size:14px;">Vista panorámica</span>
-        </div>
-        <div class="card-actions" style="display:flex;gap:10px;margin-top:10px;">
-          <button class="btn" onclick="openGallery('galeriaAire')" style="display:inline-block;width:100%;text-align:center;background:#10b981;color:#fff;border:none;border-radius:10px;padding:12px 16px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;">Ver más</button>
-        </div>
-      </div>
-    </article>
-
+<article class="card">
+  <div class="card-media">
+    <img class="card-img" src="img/SALA AGUA.jpg" alt="Casa Elemento Agua">
+    <span class="badge-top badge-left badge-blue">AGUA</span>
+    <span class="badge-top badge-right badge-green">En Stock</span>
   </div>
-</section>
+  <div class="card-body">
+    <h3 class="card-title">Casa Elemento Agua</h3>
+    <p class="card-desc">3 habitaciones • 2 baños • Vista al mar</p>
+    <div class="card-row">
+      <span class="price">$320,000</span>
+      <span class="hint">Ideal vacacional</span>
+    </div>
+    <div class="card-actions" style="display: flex; gap: 10px; margin-top: 10px;">
+      <!-- Botón Ver más -->
+      <button class="btn" onclick="openGallery('galeriaAgua')">Ver más</button>
 
-<!-- Sección de Urgencia -->
-<section style="max-width:1100px;margin:0 auto;padding:40px 20px;">
-  <div class="urgency" style="background:linear-gradient(135deg,#0ea5a3 0%,#10b981 100%);border-radius:16px;padding:42px 28px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,.10)">
-    <h2 style="font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#fff;font-size:clamp(28px,3.5vw,40px);margin:0 0 10px;font-weight:800">
-      ¡No Esperes Más!
-    </h2>
-    <p style="font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:rgba(255,255,255,.92);font-size:clamp(16px,2.2vw,18px);max-width:760px;margin:0 auto 24px">
-      Estas propiedades se están vendiendo rápidamente. Agenda tu visita hoy mismo y asegura tu nuevo hogar.
-    </p>
-    <div class="urgency-ctas" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-      <a class="urgency-card" href="tel:+521234567890" style="background:#fff;color:#111;border:1px solid #e5e7eb;border-radius:14px;padding:14px 22px;min-width:240px;display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:18px;box-shadow:0 6px 16px rgba(0,0,0,.08);transition:transform .2s, box-shadow .2s;text-decoration:none;">📞 Llamar Ahora</a>
-      <a class="urgency-card" onclick="openVisitModal()" style="background:#fff;color:#111;border:1px solid #e5e7eb;border-radius:14px;padding:14px 22px;min-width:240px;display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:18px;box-shadow:0 6px 16px rgba(0,0,0,.08);transition:transform .2s, box-shadow .2s;cursor:pointer;">📅 Agendar Visita</a>
+   
+      </a>
     </div>
   </div>
-</section>
-<!-- "Final de la sección de casas" -->
+</article>
+
+
+    <!-- Card FUEGO -->
+<article class="card">
+  <div class="card-media">
+    <img class="card-img" src="img/VESUVIO 1.png" alt="Casa Elemento Fuego">
+    <span class="badge-top badge-left badge-orange">FUEGO</span>
+    <span class="badge-top badge-right badge-green">En Stock</span>
+  </div>
+  <div class="card-body">
+    <h3 class="card-title">Casa Elemento Fuego</h3>
+    <p class="card-desc">4 habitaciones • 3 baños • Terraza con asador</p>
+    <div class="card-row">
+      <span class="price">$350,000</span>
+      <span class="hint">Entrega inmediata</span>
+    </div>
+    <div class="card-actions" style="display: flex; gap: 10px; margin-top: 10px;">
+      <!-- Botón Ver más -->
+      <button class="btn" onclick="openGallery('galeriaFuego')">Ver más</button>
+
+   
+      </a>
+    </div>
+  </div>
+</article>
+
+
+    <!-- Card AIRE -->
+<article class="card">
+  <div class="card-media">
+    <img class="card-img" src="img/SALA.jpeg" alt="Casa Elemento Aire">
+    <span class="badge-top badge-left" style="background:#0ea5e9;color:#fff">AIRE</span>
+    <span class="badge-top badge-right badge-green">En Stock</span>
+  </div>
+  <div class="card-body">
+    <h3 class="card-title">Casa Elemento Aire</h3>
+    <p class="card-desc">2 habitaciones • 2 baños • Terraza elevada</p>
+    <div class="card-row">
+      <span class="price">$310,000</span>
+      <span class="hint">Vista panorámica</span>
+    </div>
+    <div class="card-actions" style="display: flex; gap: 10px; margin-top: 10px;">
+      <!-- Botón Ver más -->
+      <button class="btn" onclick="openGallery('galeriaAire')">Ver más</button>
+
+  
+      </a>
+    </div>
+  </div>
+</article>
+
+
+    </div>
+  </section>
+
+<!-- ====== GALERÍA DE FOTOS — ORIGINAL SIN RECORTES (COPIAR Y PEGAR) ====== -->
+<style>
+  /* Backdrop con leve blur */
+  .gallery-modal{
+    display:none; position:fixed; inset:0;
+    background: rgba(0,0,0,.45);
+    backdrop-filter: blur(2px);
+    z-index:1000;
+    padding: 0 2%;
+  }
+
+  /* Contenedor limpio (sin caja oscura) */
+  .gallery-content{
+    position:relative; max-width:1200px; margin:40px auto;
+    background: transparent; border-radius: 0; padding: 0; box-shadow: none;
+  }
+
+  /* Botón cerrar */
+  .close{
+    position:absolute; top:12px; right:12px; z-index:10;
+    width:40px; height:40px; display:grid; place-items:center;
+    font-size:22px; color:#fff; cursor:pointer; user-select:none;
+    background: rgba(0,0,0,.45); border-radius: 50%; backdrop-filter: blur(2px);
+    transition: background .15s ease;
+  }
+  .close:hover{ background: rgba(0,0,0,.65) }
+
+  /* Título opcional */
+  .gallery-content h2{
+    text-align:center; margin-bottom:14px;
+    color:#fff; font-weight:800; letter-spacing:.2px;
+    font-size: clamp(18px, 2.2vw, 26px);
+    text-shadow: 0 2px 14px rgba(0,0,0,.45);
+    z-index: 5; pointer-events: none;
+  }
+
+  /* Viewer (imagen + miniaturas) */
+  .viewer{ display:flex; flex-direction:column; gap: 14px; }
+
+  /* Barra de progreso */
+  .progress-track{ height:4px; width:100%; background:rgba(255,255,255,.25); border-radius:999px; overflow:hidden }
+  .progress-bar{ height:100%; width:0%; background: linear-gradient(90deg,#10b981,#0ea5e9); transition: width .25s ease }
+
+  /* Área principal: muestra imagen tal cual (sin recortes) */
+  .viewer-main{
+    position:relative;
+    display:flex; justify-content:center; align-items:center;
+    max-height:80vh; overflow:auto;
+    border-radius:12px; background:#fff;
+  }
+  .viewer-main img{
+    max-width:100%; max-height:80vh;
+    width:auto; height:auto;
+    object-fit: contain; /*  ← sin recortes */
+    display:block; border-radius:12px;
+    transition: opacity .15s ease;
+    user-select: none;
+  }
+
+  /* Flechas */
+  .nav-btn{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:46px; height:46px; border:none; border-radius:50%;
+    background: rgba(255,255,255,.9); color:#111;
+    display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:20px;
+    box-shadow:0 8px 22px rgba(0,0,0,.22);
+  }
+  .nav-prev{ left:14px } .nav-next{ right:14px }
+
+  /* Contador */
+  .counter{
+    position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
+    background: rgba(0,0,0,.55); color:#fff; padding:6px 12px;
+    border-radius:999px; font-size:12px; font-weight:700;
+    backdrop-filter: blur(2px);
+  }
+
+  /* Miniaturas */
+  .thumbs{ display:flex; gap:10px; overflow-x:auto; padding:6px 2px 4px; scrollbar-width: thin }
+  .thumb{
+    width:120px; height:80px; flex:0 0 auto; border-radius:12px; overflow:hidden; cursor:pointer;
+    opacity:.65; transition: .18s ease; background:#e5e7eb;
+    box-shadow: 0 6px 16px rgba(0,0,0,.12);
+  }
+  .thumb:hover{ opacity:.9; transform: translateY(-2px) }
+  .thumb img{ width:100%; height:100%; object-fit:cover; display:block }
+  .thumb.active{ opacity: 1; box-shadow: 0 0 0 3px #10b981, 0 10px 24px rgba(0,0,0,.18) }
+
+  /* La grilla original solo es fuente de imágenes */
+  .gallery-grid{ display:none }
+
+  body.no-scroll{ overflow: hidden }
+
+  @media (max-width:640px){
+    .viewer-main img{ max-height:65vh }
+    .thumb{ width:92px; height:64px }
+  }
+</style>
+
+<!-- ====== MODALES DE GALERÍA ====== -->
+<div id="galeriaAgua" class="gallery-modal">
+  <div class="gallery-content">
+    <span class="close" onclick="closeGallery('galeriaAgua')">&times;</span>
+    <h2>Casa Elemento Agua</h2>
+    <div class="gallery-grid">
+      <img src="img/SALA AGUA.jpg" alt="Sala Agua" loading="lazy" decoding="async">
+      <img src="img/PLANTA BAJA.png" alt="Planta baja" loading="lazy" decoding="async">
+      <img src="img/FACHADA PPAL.png" alt="Fachada principal" loading="lazy" decoding="async">
+      <img src="img/FACHADA POSTERIOR.png" alt="Fachada posterior" loading="lazy" decoding="async">
+      <img src="img/COCINA.png" alt="Cocina" loading="lazy" decoding="async">
+    </div>
+  </div>
+</div>
+
+<div id="galeriaFuego" class="gallery-modal">
+  <div class="gallery-content">
+    <span class="close" onclick="closeGallery('galeriaFuego')">&times;</span>
+    <h2>Casa Elemento Fuego</h2>
+    <div class="gallery-grid">
+      <img src="img/SALA FUEGO.png" alt="Fuego 1" loading="lazy" decoding="async">
+      <img src="img/PERSPECTIVA FUEGO.png" alt="Fuego 2" loading="lazy" decoding="async">
+      <img src="img/ESCALERAS FUEGO.png" alt="Fuego 3" loading="lazy" decoding="async">
+      <img src="img/COMEDOR FUEGO.png" alt="Fuego 4" loading="lazy" decoding="async">
+      <img src="img/FACHADA POSTERIOR.png" alt="Fuego 5" loading="lazy" decoding="async">
+      <img src="img/FACHADA PPAL FUEGO.png" alt="Fuego 5" loading="lazy" decoding="async">
+      
+    </div>
+  </div>
+</div>
+
+<div id="galeriaAire" class="gallery-modal">
+  <div class="gallery-content">
+    <span class="close" onclick="closeGallery('galeriaAire')">&times;</span>
+    <h2>Casa Elemento Aire</h2>
+    <div class="gallery-grid">
+      <img src="img/ESCALERAS AIRE.jpeg" alt="Sala Aire" loading="lazy" decoding="async">
+      <img src="img/SALA AIRE.jpeg" alt="Escaleras" loading="lazy" decoding="async">
+      <img src="img/PB.jpeg" alt="Planta baja" loading="lazy" decoding="async">
+      <img src="img/aire4.jpg" alt="Aire 4" loading="lazy" decoding="async">
+      <img src="img/aire5.jpg" alt="Aire 5" loading="lazy" decoding="async">
+    </div>
+  </div>
+</div>
+
+<script>
+  /* Construye el visor (imagen principal + miniaturas) solo la primera vez */
+  function buildViewer(modal){
+    if(modal.dataset.built === "1") return;
+
+    const content = modal.querySelector('.gallery-content');
+    const imgs = [...content.querySelectorAll('.gallery-grid img')];
+
+    // Barra de progreso
+    const track = document.createElement('div'); track.className = 'progress-track';
+    const bar = document.createElement('div'); bar.className = 'progress-bar';
+    track.appendChild(bar);
+
+    // Viewer principal
+    const viewer = document.createElement('div'); viewer.className='viewer';
+    const main = document.createElement('div'); main.className='viewer-main';
+    const mainImg = document.createElement('img');
+
+    // Flechas y contador
+    const prev = document.createElement('button'); prev.className='nav-btn nav-prev'; prev.innerHTML='‹';
+    const next = document.createElement('button'); next.className='nav-btn nav-next'; next.innerHTML='›';
+    const counter = document.createElement('div'); counter.className='counter';
+
+    main.append(mainImg, prev, next, counter);
+
+    // Miniaturas
+    const thumbs = document.createElement('div'); thumbs.className='thumbs';
+    imgs.forEach((img, i)=>{
+      const t = document.createElement('div'); t.className='thumb';
+      const ti = document.createElement('img'); ti.src = img.src; ti.alt = img.alt || ('Foto '+(i+1));
+      t.appendChild(ti);
+      t.addEventListener('click', ()=> show(i));
+      thumbs.appendChild(t);
+    });
+
+    viewer.append(track, main, thumbs);
+    content.appendChild(viewer);
+
+    let current = 0, startX = 0;
+
+    function updateProgress(i){
+      bar.style.width = (((i+1)/imgs.length)*100) + '%';
+    }
+
+    function show(i){
+      if(i < 0) i = imgs.length - 1;
+      if(i >= imgs.length) i = 0;
+      current = i;
+
+      mainImg.style.opacity = .0;
+      const src = imgs[i].src;
+      setTimeout(()=>{ mainImg.src = src; mainImg.style.opacity = 1; }, 40);
+
+      counter.textContent = (i+1) + ' / ' + imgs.length;
+      updateProgress(i);
+
+      thumbs.querySelectorAll('.thumb').forEach((el, idx)=>{
+        el.classList.toggle('active', idx === i);
+      });
+
+      const active = thumbs.children[i];
+      if(active) active.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+    }
+
+    prev.addEventListener('click', ()=> show(current - 1));
+    next.addEventListener('click', ()=> show(current + 1));
+
+    // Swipe móvil
+    main.addEventListener('touchstart', e=>{ startX = e.touches[0].clientX; }, {passive:true});
+    main.addEventListener('touchend', e=>{
+      const dx = e.changedTouches[0].clientX - startX;
+      if(Math.abs(dx) > 40) (dx > 0 ? show(current - 1) : show(current + 1));
+    }, {passive:true});
+
+    // Teclado
+    modal.addEventListener('keydown', e=>{
+      if(e.key === 'ArrowLeft')  show(current - 1);
+      if(e.key === 'ArrowRight') show(current + 1);
+      if(e.key === 'Escape')     closeGallery(modal.id);
+    });
+
+    // Inicial
+    show(0);
+    modal.dataset.built = "1";
+  }
+
+  function openGallery(id){
+    const m = document.getElementById(id);
+    if(!m) return;
+    buildViewer(m);
+    m.style.display = 'block';
+    m.setAttribute('tabindex','-1'); m.focus();
+    document.body.classList.add('no-scroll');
+  }
+
+  function closeGallery(id){
+    const m = document.getElementById(id);
+    if(!m) return;
+    m.style.display = 'none';
+    document.body.classList.remove('no-scroll');
+  }
+
+  // Cerrar clic fuera del contenido
+  window.addEventListener('click', e=>{
+    if(e.target.classList.contains('gallery-modal')){
+      e.target.style.display = 'none';
+      document.body.classList.remove('no-scroll');
+    }
+  });
+</script>
+<!-- ====== FIN GALERÍA ====== -->
+
+
+  
+  
+
+  <!-- Separación visual -->
+  <div class="hr-space"></div>
+
+  <!-- SECCIÓN DE URGENCIA -->
+  <section>
+    <div class="section-wrap">
+      <div class="urgency">
+        <h2 style="font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;">
+  ¡No Esperes Más!
+</h2>
+
+<p style="font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;">
+  Estas propiedades se están vendiendo rápidamente. Agenda tu visita hoy mismo y asegura tu nuevo hogar.
+</p>
+
+
+        <div class="urgency-ctas">
+          <a class="urgency-card" href="tel:+521234567890">📞 Llamar Ahora</a>
+          
+<!-- 1) ENLACE QUE ABRE EL MODAL -->
+<a class="urgency-card" onclick="openVisitModal()">📅 Agendar Visita</a>
+
+<!-- 2) MODAL DE AGENDA -->
+<div id="visitModal" class="visit-modal" aria-hidden="true">
+  <div class="visit-backdrop" onclick="closeVisitModal()"></div>
+
+  <div class="visit-card" role="dialog" aria-modal="true" aria-labelledby="visitTitle">
+    <button class="visit-close" onclick="closeVisitModal()" aria-label="Cerrar">×</button>
+
+    <h3 id="visitTitle" class="visit-title">Agendar visita</h3>
+    <p class="visit-sub">Elige fecha y hora para visitar la propiedad y deja tus datos de contacto.</p>
+
+    <form id="visitForm" onsubmit="submitVisit(event)">
+      <div class="visit-grid">
+        <label class="field">
+          <span>Nombre completo *</span>
+          <input id="vf_name" type="text" required>
+        </label>
+
+        <label class="field">
+          <span>Teléfono (WhatsApp) *</span>
+          <input id="vf_phone" type="tel" inputmode="tel" pattern="[0-9+\-()\s]{8,}" required>
+        </label>
+
+        <label class="field">
+          <span>Fecha *</span>
+          <input id="vf_date" type="date" required>
+        </label>
+
+        <label class="field">
+          <span>Hora *</span>
+          <input id="vf_time" type="time" required>
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Comentarios (opcional)</span>
+        <textarea id="vf_notes" rows="3" placeholder="Ej. Vamos 2 personas, preferimos tarde…"></textarea>
+      </label>
+
+      <div class="visit-actions">
+        <button type="button" class="btn btn-ghost" onclick="downloadICS()">Añadir a mi calendario (.ics)</button>
+        <button type="submit" class="btn btn-primary">Enviar por WhatsApp</button>
+      </div>
+
+      <p id="vf_error" class="visit-error" hidden></p>
+    </form>
+  </div>
+</div>
+
+<!-- 3) ESTILOS -->
+<style>
+  /* Contenedor modal */
+  .visit-modal{position:fixed;inset:0;display:none;z-index:9999}
+  .visit-modal.show{display:block}
+  .visit-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(3px)}
+  .visit-card{
+    position:relative;max-width:640px;margin:5vh auto;z-index:1;
+    background:#fff;border-radius:18px;padding:28px;
+    box-shadow:0 25px 60px rgba(0,0,0,.18);
+    animation:pop .18s ease-out;
+  }
+  @keyframes pop{from{transform:scale(.96);opacity:.6}to{transform:scale(1);opacity:1}}
+
+  /* Encabezado */
+  .visit-title{margin:0 0 6px;font:700 24px/1.2 system-ui,Segoe UI,Roboto,Arial}
+  .visit-sub{margin:0 0 18px;color:#64748b;font:500 14px/1.5 system-ui,Segoe UI,Roboto,Arial}
+
+  /* Botón cerrar */
+  .visit-close{
+    position:absolute;top:10px;right:12px;width:36px;height:36px;border-radius:10px;
+    border:0;background:#f1f5f9;color:#111;font-size:22px;cursor:pointer;
+  }
+  .visit-close:hover{background:#e2e8f0}
+
+  /* Campos */
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px}
+  @media (max-width:680px){.visit-grid{grid-template-columns:1fr}}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field span{font:600 13px/1 system-ui,Segoe UI,Roboto,Arial;color:#0f172a}
+  .field input,.field textarea{
+    width:100%;border:1px solid #e2e8f0;border-radius:12px;padding:12px 14px;
+    font:500 14px/1.2 system-ui,Segoe UI,Roboto,Arial;color:#0f172a;background:#fff;
+    outline:none;transition:border .15s, box-shadow .15s;
+  }
+  .field input:focus,.field textarea:focus{
+    border-color:#10b981;box-shadow:0 0 0 4px rgba(16,185,129,.15)
+  }
+  .field textarea{resize:vertical}
+
+  /* Acciones */
+  .visit-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:10px}
+  @media (max-width:680px){.visit-actions{flex-direction:column}}
+  .btn{border:0;border-radius:12px;padding:12px 16px;font:700 14px/1 system-ui,Segoe UI,Roboto,Arial;cursor:pointer}
+  .btn-primary{background:#10b981;color:#fff;box-shadow:0 6px 18px rgba(16,185,129,.35)}
+  .btn-primary:hover{background:#0ea371}
+  .btn-ghost{background:#f8fafc;color:#0f172a}
+  .btn-ghost:hover{background:#eef2f7}
+
+  .visit-error{margin-top:8px;color:#e11d48;font:600 13px/1.4 system-ui,Segoe UI,Roboto,Arial}
+</style>
+
+<!-- 4) LÓGICA -->
+<script>
+  // ✅ tu número de WhatsApp con LADA (sin +). Ej: México 52 + 1 + 442…
+  const WHATSAPP_NUM = "521234567890";
+
+  function openVisitModal(){
+    const m = document.getElementById('visitModal');
+    m.classList.add('show');
+    // Fecha mínima = hoy
+    const d = document.getElementById('vf_date');
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth()+1).padStart(2,'0');
+    const dd = String(today.getDate()).padStart(2,'0');
+    d.min = `${yyyy}-${mm}-${dd}`;
+  }
+  function closeVisitModal(){
+    document.getElementById('visitModal').classList.remove('show');
+  }
+
+  function showError(msg){
+    const e = document.getElementById('vf_error');
+    e.textContent = msg; e.hidden = false;
+    setTimeout(()=>{ e.hidden = true; }, 4000);
+  }
+
+  function submitVisit(ev){
+    ev.preventDefault();
+    const name = document.getElementById('vf_name').value.trim();
+    const phone = document.getElementById('vf_phone').value.trim();
+    const date = document.getElementById('vf_date').value;
+    const time = document.getElementById('vf_time').value;
+    const notes = document.getElementById('vf_notes').value.trim();
+
+    if(!name || !phone || !date || !time){ return showError('Completa los campos requeridos (*)'); }
+
+    const chosen = new Date(`${date}T${time}`);
+    if(chosen < new Date()){ return showError('Elige una fecha y hora futuras.'); }
+
+    const nice = chosen.toLocaleString([], {weekday:'long', year:'numeric', month:'long', day:'numeric', hour:'2-digit', minute:'2-digit'});
+
+    const msg = `¡Hola! Quiero agendar una visita:\n` +
+                `• Nombre: ${name}\n` +
+                `• Teléfono: ${phone}\n` +
+                `• Fecha y hora: ${nice}\n` +
+                (notes ? `• Comentarios: ${notes}` : '');
+
+    const url = `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank', 'noopener');
+    closeVisitModal();
+  }
+
+  // Descarga ICS para que el cliente lo guarde en su calendario
+  function downloadICS(){
+    const name = document.getElementById('vf_name').value.trim() || 'Cliente';
+    const date = document.getElementById('vf_date').value;
+    const time = document.getElementById('vf_time').value;
+    const notes = document.getElementById('vf_notes').value.trim();
+
+    if(!date || !time){ return showError('Selecciona fecha y hora para crear el .ics'); }
+
+    const start = new Date(`${date}T${time}:00`);
+    const end = new Date(start.getTime() + 60*60*1000); // 1 h
+
+    const fmt = d => d.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
+    const ics =
+`BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:${Date.now()}@agenda
+DTSTAMP:${fmt(new Date())}
+DTSTART:${fmt(start)}
+DTEND:${fmt(end)}
+SUMMARY:Visita a propiedad
+DESCRIPTION:Visita agendada por ${name}${notes ? "\\n" + notes.replace(/\n/g,'\\n') : ""}
+END:VEVENT
+END:VCALENDAR`;
+
+    const blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'visita_propiedad.ics';
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+</script>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
+
+
+
+    <!-- Agregados modales para mostrar información detallada de cada casa -->
+    <!-- Modales para información de casas -->
+    <div id="modal1" class="modal-casa" style="display: none;">
+        <div class="modal-content-casa">
+            <span class="close-casa" onclick="closeModal('modal1')">&times;</span>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="img/SERENDIPIA 1.png" alt="Casa Serendipia" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-shamrock mb-3">Casa Serendipia</h2>
+                    <div class="casa-info">
+                        <p><strong><i class="fas fa-home mr-2"></i>Tipo:</strong> Casa Residencial</p>
+                        <p><strong><i class="fas fa-bed mr-2"></i>Habitaciones:</strong> 3</p>
+                        <p><strong><i class="fas fa-bath mr-2"></i>Baños:</strong> 2.5</p>
+                        <p><strong><i class="fas fa-car mr-2"></i>Estacionamiento:</strong> 2 autos</p>
+                        <p><strong><i class="fas fa-ruler-combined mr-2"></i>Área:</strong> 180 m²</p>
+                        <p><strong><i class="fas fa-dollar-sign mr-2"></i>Precio:</strong> $2,850,000 MXN</p>
+                        <p><strong><i class="fas fa-map-marker-alt mr-2"></i>Ubicación:</strong> Querétaro, México</p>
+                        <hr>
+                        <h5 class="text-timber-green">Características:</h5>
+                        <ul>
+                            <li>Diseño moderno con fachada contemporánea</li>
+                            <li>Cocina integral con isla central</li>
+                            <li>Jardín privado con área de asador</li>
+                            <li>Acabados de primera calidad</li>
+                            <li>Sistema de seguridad incluido</li>
+                        </ul>
+                        <div class="mt-4">
+                            <button class="btn btn-success mr-2" onclick="contactarVenta('Casa Serendipia')">
+                                <i class="fas fa-phone mr-1" href="contact.html"></i>Contactar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal-casa" style="display: none;">
+        <div class="modal-content-casa">
+            <span class="close-casa" onclick="closeModal('modal2')">&times;</span>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="img/SERENDIPIA 2.png" alt="Casa Moderna" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-shamrock mb-3">Casa Moderna</h2>
+                    <div class="casa-info">
+                        <p><strong><i class="fas fa-home mr-2"></i>Tipo:</strong> Casa Contemporánea</p>
+                        <p><strong><i class="fas fa-bed mr-2"></i>Habitaciones:</strong> 4</p>
+                        <p><strong><i class="fas fa-bath mr-2"></i>Baños:</strong> 3</p>
+                        <p><strong><i class="fas fa-car mr-2"></i>Estacionamiento:</strong> 2 autos</p>
+                        <p><strong><i class="fas fa-ruler-combined mr-2"></i>Área:</strong> 220 m²</p>
+                        <p><strong><i class="fas fa-dollar-sign mr-2"></i>Precio:</strong> $3,200,000 MXN</p>
+                        <p><strong><i class="fas fa-map-marker-alt mr-2"></i>Ubicación:</strong> Querétaro, México</p>
+                        <hr>
+                        <h5 class="text-timber-green">Características:</h5>
+                        <ul>
+                            <li>Diseño de interiores minimalista</li>
+                            <li>Sala de estar con doble altura</li>
+                            <li>Master suite con vestidor</li>
+                            <li>Terraza con vista panorámica</li>
+                            <li>Smart home technology</li>
+                        </ul>
+                        <div class="mt-4">
+                            <button class="btn btn-success mr-2" onclick="contactarVenta('Casa Moderna')">
+                                <i class="fas fa-phone mr-1" href="contact.html"></i>Contactar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal-casa" style="display: none;">
+        <div class="modal-content-casa">
+            <span class="close-casa" onclick="closeModal('modal3')">&times;</span>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="img/SERENDIPIA 3.png" alt="Casa Jardín" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-shamrock mb-3">Casa Jardín</h2>
+                    <div class="casa-info">
+                        <p><strong><i class="fas fa-home mr-2"></i>Tipo:</strong> Casa Ecológica</p>
+                        <p><strong><i class="fas fa-bed mr-2"></i>Habitaciones:</strong> 3</p>
+                        <p><strong><i class="fas fa-bath mr-2"></i>Baños:</strong> 2</p>
+                        <p><strong><i class="fas fa-car mr-2"></i>Estacionamiento:</strong> 1 auto</p>
+                        <p><strong><i class="fas fa-ruler-combined mr-2"></i>Área:</strong> 160 m²</p>
+                        <p><strong><i class="fas fa-dollar-sign mr-2"></i>Precio:</strong> $2,650,000 MXN</p>
+                        <p><strong><i class="fas fa-map-marker-alt mr-2"></i>Ubicación:</strong> Querétaro, México</p>
+                        <hr>
+                        <h5 class="text-timber-green">Características:</h5>
+                        <ul>
+                            <li>Vegetación integrada en interiores</li>
+                            <li>Sistemas de captación de agua pluvial</li>
+                            <li>Paneles solares incluidos</li>
+                            <li>Jardín vertical en sala principal</li>
+                            <li>Materiales sustentables</li>
+                        </ul>
+                        <div class="mt-4">
+                            <button class="btn btn-success mr-2" onclick="contactarVenta('Casa Jardín')">
+                                <i class="fas fa-phone mr-1" href="contact.html"></i>Contactar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal4" class="modal-casa" style="display: none;">
+        <div class="modal-content-casa">
+            <span class="close-casa" onclick="closeModal('modal4')">&times;</span>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="img/SERENDIPIA 4.png" alt="Casa Elegante" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-shamrock mb-3">Casa Elegante</h2>
+                    <div class="casa-info">
+                        <p><strong><i class="fas fa-home mr-2"></i>Tipo:</strong> Casa de Lujo</p>
+                        <p><strong><i class="fas fa-bed mr-2"></i>Habitaciones:</strong> 4</p>
+                        <p><strong><i class="fas fa-bath mr-2"></i>Baños:</strong> 3.5</p>
+                        <p><strong><i class="fas fa-car mr-2"></i>Estacionamiento:</strong> 3 autos</p>
+                        <p><strong><i class="fas fa-ruler-combined mr-2"></i>Área:</strong> 280 m²</p>
+                        <p><strong><i class="fas fa-dollar-sign mr-2"></i>Precio:</strong> $4,500,000 MXN</p>
+                        <p><strong><i class="fas fa-map-marker-alt mr-2"></i>Ubicación:</strong> Querétaro, México</p>
+                        <hr>
+                        <h5 class="text-timber-green">Características:</h5>
+                        <ul>
+                            <li>Diseño de interiores de lujo</li>
+                            <li>Biblioteca con chimenea</li>
+                            <li>Piscina y área de entretenimiento</li>
+                            <li>Acabados en mármol y madera fina</li>
+                            <li>Sistema de domótica completo</li>
+                        </ul>
+                        <div class="mt-4">
+                            <button class="btn btn-success mr-2" onclick="contactarVenta('Casa Elegante')">
+                                <i class="fas fa-phone mr-1" href="contact.html"></i>Contactar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal5" class="modal-casa" style="display: none;">
+        <div class="modal-content-casa">
+            <span class="close-casa" onclick="closeModal('modal5')">&times;</span>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="img/HIGH GARDENS(DECORACION DE PARED DIA).png" alt="High Gardens" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-shamrock mb-3">High Gardens</h2>
+                    <div class="casa-info">
+                        <p><strong><i class="fas fa-home mr-2"></i>Tipo:</strong> Casa Residencial Premium</p>
+                        <p><strong><i class="fas fa-bed mr-2"></i>Habitaciones:</strong> 3</p>
+                        <p><strong><i class="fas fa-bath mr-2"></i>Baños:</strong> 2.5</p>
+                        <p><strong><i class="fas fa-car mr-2"></i>Estacionamiento:</strong> 2 autos</p>
+                        <p><strong><i class="fas fa-ruler-combined mr-2"></i>Área:</strong> 200 m²</p>
+                        <p><strong><i class="fas fa-dollar-sign mr-2"></i>Precio:</strong> $3,100,000 MXN</p>
+                        <p><strong><i class="fas fa-map-marker-alt mr-2"></i>Ubicación:</strong> Querétaro, México</p>
+                        <hr>
+                        <h5 class="text-timber-green">Características:</h5>
+                        <ul>
+                            <li>Decoración de pared artística</li>
+                            <li>Iluminación natural optimizada</li>
+                            <li>Espacios abiertos y funcionales</li>
+                            <li>Jardín con diseño paisajístico</li>
+                            <li>Área de relajación exterior</li>
+                        </ul>
+                        <div class="mt-4">
+                            <button class="btn btn-success mr-2" onclick="contactarVenta('High Gardens')">
+                                <i class="fas fa-phone mr-1" href="contact.html"></i>Contactar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal6" class="modal-casa" style="display: none;">
+        <div class="modal-content-casa">
+            <span class="close-casa" onclick="closeModal('modal6')">&times;</span>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="img/PERGOLA 1.png" alt="Casa con Pérgola" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-shamrock mb-3">Casa con Pérgola</h2>
+                    <div class="casa-info">
+                        <p><strong><i class="fas fa-home mr-2"></i>Tipo:</strong> Casa con Terraza</p>
+                        <p><strong><i class="fas fa-bed mr-2"></i>Habitaciones:</strong> 3</p>
+                        <p><strong><i class="fas fa-bath mr-2"></i>Baños:</strong> 2</p>
+                        <p><strong><i class="fas fa-car mr-2"></i>Estacionamiento:</strong> 2 autos</p>
+                        <p><strong><i class="fas fa-ruler-combined mr-2"></i>Área:</strong> 190 m²</p>
+                        <p><strong><i class="fas fa-dollar-sign mr-2"></i>Precio:</strong> $2,950,000 MXN</p>
+                        <p><strong><i class="fas fa-map-marker-alt mr-2"></i>Ubicación:</strong> Querétaro, México</p>
+                        <hr>
+                        <h5 class="text-timber-green">Características:</h5>
+                        <ul>
+                            <li>Pérgola de diseño arquitectónico</li>
+                            <li>Área de entretenimiento exterior</li>
+                            <li>Cocina con vista al jardín</li>
+                            <li>Materiales resistentes al clima</li>
+                            <li>Espacio ideal para reuniones</li>
+                        </ul>
+                        <div class="mt-4">
+                            <button class="btn btn-success mr-2" onclick="contactarVenta('Casa con Pérgola')">
+                                <i class="fas fa-phone mr-1" href="contact.html"></i>Contactar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- "Inicio de la sección de Proyectos" -->
     <div class="container-fluid py-5">
@@ -317,6 +1270,13 @@
                     <h1 class="mb-4">Nuestro Estilo Reflejado en Cada Espacio</h1>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12 text-center mb-2">
+                    <ul class="list-inline mb-4" id="portfolio-flters">
+                    </ul>
+                </div>
+            </div>
+            <!-- DAYAN:ALINIACION DE IMAGENES Y MARCO VERDE -->
             <!-- Proyecto 1 - Categoría: first (Completo) -->
             <div class="row mx-1 portfolio-container">
                 <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item first">
@@ -335,12 +1295,11 @@
                                 </a>
                                 <!--DAYAN:CAMBIE LAS IMAGENES-->
                                 <!--  Categoría:(Completo) -->
-                                <!-- Agregando data-title para mostrar nombre en lightbox -->
-                                <a class="btn btn-outline-primary m-1" href="img/VESUVIO 1.png" data-lightbox="portfolio" data-title="VESUVIO RESIDENCIAL">
+                                <a class="btn btn-outline-primary m-1" href="img/VESUVIO 1.png" data-lightbox="portfolio">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a href="img/VESUVIO 2.png" data-lightbox="portfolio" data-title="VESUVIO RESIDENCIAL"></a>
-                                <a href="img/VESUVIO 3.png" data-lightbox="portfolio" data-title="VESUVIO RESIDENCIAL"></a>
+                                <a href="img/VESUVIO 2.png" data-lightbox="portfolio"></a>
+                                <a href="img/VESUVIO 3.png" data-lightbox="portfolio"></a>
                             </div>
                         </div>
                     </div>
@@ -350,6 +1309,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item first">
                     <div class="position-relative overflow-hidden">
                         <div class="portfolio-img d-flex align-items-center justify-content-center">
+                            <!-- Sección de Imagenes -->
                             <!-- DAYAN:ALINIACION DE IMAGENES Y MARCO VERDE -->
                             <img src="img/TULIPAN 6.png" alt="obra3"style="height: 275px; width: 100%; object-fit: cover; border: 2px solid #14532d; display: block;">
                         </div>
@@ -359,15 +1319,14 @@
                                 <a class="btn btn-outline-primary m-1" href="">
                                     <i class="fa fa-link"></i>
                                 </a>
-                                <!-- Agregando data-title para mostrar nombre en lightbox -->
-                                <a class="btn btn-outline-primary m-1" href="img/TULIPAN 6.png" data-lightbox="portfolio" data-title="TULIPAN RESIDENCIAL">
+                                <a class="btn btn-outline-primary m-1" href="img/TULIPAN 6.png" data-lightbox="portfolio">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a href="img/TULIPAN 5.png" data-lightbox="portfolio" data-title="TULIPAN RESIDENCIAL"></a>
-                                <a href="img/TULIPAN 4.png" data-lightbox="portfolio" data-title="TULIPAN RESIDENCIAL"></a>
-                                <a href="img/TULIPAN 3.png" data-lightbox="portfolio" data-title="TULIPAN RESIDENCIAL"></a>
-                                <a href="img/TULIPAN 2.png" data-lightbox="portfolio" data-title="TULIPAN RESIDENCIAL"></a>
-                                <a href="img/TULIPAN 1.png" data-lightbox="portfolio" data-title="TULIPAN RESIDENCIAL"></a>
+                                <a href="img/TULIPAN 5.png" data-lightbox="portfolio"></a>
+                                <a href="img/TULIPAN 4.png" data-lightbox="portfolio"></a>
+                                <a href="img/TULIPAN 3.png" data-lightbox="portfolio"></a>
+                                <a href="img/TULIPAN 2.png" data-lightbox="portfolio"></a>
+                                <a href="img/TULIPAN 1.png" data-lightbox="portfolio"></a>
                             </div>
                         </div>
                     </div>
@@ -386,13 +1345,12 @@
                 <a class="btn btn-outline-primary m-1" href="">
                     <i class="fa fa-link"></i>
                 </a>
-                <!-- Agregando data-title para mostrar nombre en lightbox -->
-                <a class="btn btn-outline-primary m-1" href="img/SERENDIPIA 1.png" data-lightbox="portfolio" data-title="SERENDIPIA RESIDENCIAL">
+                <a class="btn btn-outline-primary m-1" href="img/SERENDIPIA 1.png" data-lightbox="portfolio">
                     <i class="fa fa-eye"></i>
                 </a>
-                <a href="img/SERENDIPIA 2.png" data-lightbox="portfolio" data-title="SERENDIPIA RESIDENCIAL"></a>
-                <a href="img/SERENDIPIA 3.png" data-lightbox="portfolio" data-title="SERENDIPIA RESIDENCIAL"></a>
-                <a href="img/SERENDIPIA 4.png" data-lightbox="portfolio" data-title="SERENDIPIA RESIDENCIAL"></a>
+                <a href="img/SERENDIPIA 2.png" data-lightbox="portfolio"></a>
+                <a href="img/SERENDIPIA 3.png" data-lightbox="portfolio"></a>
+                <a href="img/SERENDIPIA 4.png" data-lightbox="portfolio"></a>
             </div>
         </div>
     </div>
@@ -410,13 +1368,12 @@
                                 <a class="btn btn-outline-primary m-1" href="">
                                     <i class="fa fa-link"></i>
                                 </a>
-                                <!-- Agregando data-title para mostrar nombre en lightbox -->
-                                <a class="btn btn-outline-primary m-1" href="img/INNOVA 1.png" data-lightbox="portfolio" data-title="INNOVA RESIDENCIAL">
+                                <a class="btn btn-outline-primary m-1" href="img/INNOVA 1.png" data-lightbox="portfolio">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a href="img/INNOVA 2.png" data-lightbox="portfolio" data-title="INNOVA RESIDENCIAL"></a>
-                                <a href="img/INNOVA 3.png" data-lightbox="portfolio" data-title="INNOVA RESIDENCIAL"></a>
-                                <a href="img/INNOVA 4.png" data-lightbox="portfolio" data-title="INNOVA RESIDENCIAL"></a>
+                                <a href="img/INNOVA 2.png" data-lightbox="portfolio"></a>
+                                <a href="img/INNOVA 3.png" data-lightbox="portfolio"></a>
+                                <a href="img/INNOVA 4.png" data-lightbox="portfolio"></a>
                             </div>
                         </div>
                     </div>
@@ -435,20 +1392,19 @@
                 <a class="btn btn-outline-primary m-1" href="https://www.instagram.com/p/DL1jRDSAP6x/?igsh=bjV2b24wcTBsOXR2" target="_blank" rel="noopener noreferrer">
                     <i class="fa fa-link"></i>
                 </a>
-                <!-- Agregando data-title para mostrar nombre en lightbox -->
-                <a class="btn btn-outline-primary m-1" href="img/PERGOLA 1.png" data-lightbox="portfolio" data-title="PERGOLA DE DISEÑO">
+                <a class="btn btn-outline-primary m-1" href="img/PERGOLA 1.png" data-lightbox="portfolio">
                     <i class="fa fa-eye"></i>
                 </a>
-                <a href="img/PERGOLA 2.png" data-lightbox="portfolio" data-title="PERGOLA DE DISEÑO"></a>
-                <a href="img/PERGOLA 3.png" data-lightbox="portfolio" data-title="PERGOLA DE DISEÑO"></a>
-                <a href="img/PERGOLA 6.png" data-lightbox="portfolio" data-title="PERGOLA DE DISEÑO"></a>
-                <a href="img/PERGOLA 8.jpg" data-lightbox="portfolio" data-title="PERGOLA DE DISEÑO"></a>
-                <a href="img/PERGOLA 9.jpg" data-lightbox="portfolio" data-title="PERGOLA DE DISEÑO"></a>
-                <a href="img/PERGOLA 10.jpg" data-lightbox="portfolio" data-title="PERGOLA DE DISEÑO"></a>
-                <a href="img/PERGOLA 11.jpeg" data-lightbox="portfolio" data-title="PERGOLA DE DISEÑO"></a>
-                <a href="img/PERGOLA 12.jpg" data-lightbox="portfolio" data-title="PERGOLA DE DISEÑO"></a>
-                <a href="img/PERGOLA 13.jpg" data-lightbox="portfolio" data-title="PERGOLA DE DISEÑO"></a>
-                <a href="img/PERGOLA 14.jpg" data-lightbox="portfolio" data-title="PERGOLA DE DISEÑO"></a>
+                <a href="img/PERGOLA 2.png" data-lightbox="portfolio"></a>
+                <a href="img/PERGOLA 3.png" data-lightbox="portfolio"></a>
+                <a href="img/PERGOLA 6.png" data-lightbox="portfolio"></a>
+                <a href="img/PERGOLA 8.jpg" data-lightbox="portfolio"></a>
+                <a href="img/PERGOLA 9.jpg" data-lightbox="portfolio"></a>
+                <a href="img/PERGOLA 10.jpg" data-lightbox="portfolio"></a>
+                <a href="img/PERGOLA 11.jpeg" data-lightbox="portfolio"></a>
+                <a href="img/PERGOLA 12.jpg" data-lightbox="portfolio"></a>
+                <a href="img/PERGOLA 13.jpg" data-lightbox="portfolio"></a>
+                <a href="img/PERGOLA 14.jpg" data-lightbox="portfolio"></a>
             </div>
         </div>
     </div>
@@ -467,19 +1423,18 @@
                                 <a class="btn btn-outline-primary m-1" href="https://www.instagram.com/reel/DJTSrY-A8Hx/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">
                                     <i class="fa fa-link"></i>
                                 </a>
-                                <!-- Agregando data-title para mostrar nombre en lightbox -->
-                                <a class="btn btn-outline-primary m-1" href="img/DSC_4664.JPG" data-lightbox="portfolio" data-title="DISEÑO DE INTERIORES">
+                                <a class="btn btn-outline-primary m-1" href="img/DSC_4664.JPG" data-lightbox="portfolio">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a href="img/Escaleras.jpeg" data-lightbox="portfolio" data-title="DISEÑO DE INTERIORES - Escaleras"></a>
-                                <a href="img/DSC_4893.JPG" data-lightbox="portfolio" data-title="DISEÑO DE INTERIORES"></a>
-                                <a href="img/DSC_4685.JPG" data-lightbox="portfolio" data-title="DISEÑO DE INTERIORES"></a>
-                                <a href="img/DSC_4631.JPG" data-lightbox="portfolio" data-title="DISEÑO DE INTERIORES"></a>
-                                <a href="img/DSC_4630.JPG" data-lightbox="portfolio" data-title="DISEÑO DE INTERIORES"></a>
-                                <a href="img/DSC_4621.JPG" data-lightbox="portfolio" data-title="DISEÑO DE INTERIORES"></a>
-                                <a href="img/DSC_4619.JPG" data-lightbox="portfolio" data-title="DISEÑO DE INTERIORES"></a>
-                                <a href="img/DSC_4582.JPG" data-lightbox="portfolio" data-title="DISEÑO DE INTERIORES"></a>
-                                <a href="img/DSC_4576.JPG" data-lightbox="portfolio" data-title="DISEÑO DE INTERIORES"></a>
+                                <a href="img/Escaleras.jpeg" data-lightbox="portfolio"></a>
+                                <a href="img/DSC_4893.JPG" data-lightbox="portfolio"></a>
+                                <a href="img/DSC_4685.JPG" data-lightbox="portfolio"></a>
+                                <a href="img/DSC_4631.JPG" data-lightbox="portfolio"></a>
+                                <a href="img/DSC_4630.JPG" data-lightbox="portfolio"></a>
+                                <a href="img/DSC_4621.JPG" data-lightbox="portfolio"></a>
+                                <a href="img/DSC_4619.JPG" data-lightbox="portfolio"></a>
+                                <a href="img/DSC_4582.JPG" data-lightbox="portfolio"></a>
+                                <a href="img/DSC_4576.JPG" data-lightbox="portfolio"></a>
                             </div>
                         </div>
                     </div>
@@ -498,21 +1453,20 @@
                                 <a class="btn btn-outline-primary m-1" href="">
                                     <i class="fa fa-link"></i>
                                 </a>
-                                <!-- Agregando data-title para mostrar nombre en lightbox -->
-                                <a class="btn btn-outline-primary m-1" href="img/CONST10 (1).jpg" data-lightbox="portfolio" data-title="CONSTRUCCION">
+                                <a class="btn btn-outline-primary m-1" href="img/CONST10 (1).jpg" data-lightbox="portfolio">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a href="img/CONST11.jpg" data-lightbox="portfolio" data-title="CONSTRUCCION"></a>
-                                <a href="img/CONST10.jpg" data-lightbox="portfolio" data-title="CONSTRUCCION"></a>
-                                <a href="img/CONST9.jpg" data-lightbox="portfolio" data-title="CONSTRUCCION"></a>
-                                <a href="img/CONST8.jpg" data-lightbox="portfolio" data-title="CONSTRUCCION"></a>
-                                <a href="img/CONST7.jpg" data-lightbox="portfolio" data-title="CONSTRUCCION"></a>
-                                <a href="img/CONST6.jpg" data-lightbox="portfolio" data-title="CONSTRUCCION"></a>
-                                <a href="img/CONST5.jpg" data-lightbox="portfolio" data-title="CONSTRUCCION"></a>
-                                <a href="img/CONST4.jpg" data-lightbox="portfolio" data-title="CONSTRUCCION"></a>
-                                <a href="img/CONST3.jpg" data-lightbox="portfolio" data-title="CONSTRUCCION"></a>
-                                <a href="img/CONST1.jpg" data-lightbox="portfolio" data-title="CONSTRUCCION"></a>
-                                <a href="img/CONST 2.jpg" data-lightbox="portfolio" data-title="CONSTRUCCION"></a>
+                                <a href="img/CONST11.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/CONST10.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/CONST9.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/CONST8.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/CONST7.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/CONST6.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/CONST5.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/CONST4.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/CONST3.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/CONST1.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/CONST 2.jpg" data-lightbox="portfolio"></a>
                             </div>
                         </div>
                     </div>
@@ -532,15 +1486,14 @@
                                 <a class="btn btn-outline-primary m-1" href="https://www.instagram.com/p/DHYvBotAgoO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">
                                     <i class="fa fa-link"></i>
                                 </a>
-                                <!-- Agregando data-title para mostrar nombre en lightbox -->
-                                <a class="btn btn-outline-primary m-1" href="img/HG 1.png" data-lightbox="portfolio" data-title="HIGH GARDENS">
+                                <a class="btn btn-outline-primary m-1" href="img/HG 1.png" data-lightbox="portfolio">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a href="img/HG 2.png" data-lightbox="portfolio" data-title="HIGH GARDENS"></a>
-                                <a href="img/HG 4.jpg" data-lightbox="portfolio" data-title="HIGH GARDENS"></a>
-                                <a href="img/HERRERIA.JPG" data-lightbox="portfolio" data-title="HIGH GARDENS"></a>
-                                <a href="img/DSC_4880.JPG" data-lightbox="portfolio" data-title="HIGH GARDENS"></a>
-                                <a href="img/H3.jpg" data-lightbox="portfolio" data-title="HIGH GARDENS"></a>
+                                <a href="img/HG 2.png" data-lightbox="portfolio"></a>
+                                <a href="img/HG 4.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/HERRERIA.JPG" data-lightbox="portfolio"></a>
+                                <a href="img/DSC_4880.JPG" data-lightbox="portfolio"></a>
+                                <a href="img/H3.jpg" data-lightbox="portfolio"></a>
                             </div>
                         </div>
                     </div>
@@ -557,22 +1510,21 @@
                                 <a class="btn btn-outline-primary m-1" href="">
                                     <i class="fa fa-link"></i>
                                 </a>
-                                <!-- Agregando data-title para mostrar nombre en lightbox -->
-                                <a class="btn btn-outline-primary m-1" href="img/IMG_4560.JPG" data-lightbox="portfolio" data-title="PERGOLAS">
+                                <a class="btn btn-outline-primary m-1" href="img/IMG_4560.JPG" data-lightbox="portfolio">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a href="img/IMG-20250824-WA0050.jpg" data-lightbox="portfolio" data-title="PERGOLAS"></a>
-                                <a href="img/IMG_20250803_192550_700.jpg" data-lightbox="portfolio" data-title="PERGOLAS"></a>
-                                <a href="img/IMG_4560.JPG" data-lightbox="portfolio" data-title="PERGOLAS"></a>
-                                <a href="img/PERGOLA 4.png" data-lightbox="portfolio" data-title="PERGOLAS"></a>
-                                <a href="img/IMG_20250803_192550_790.jpg" data-lightbox="portfolio" data-title="PERGOLAS"></a>
-                                <a href="img/IMG_20250803_192549_528.jpg" data-lightbox="portfolio" data-title="PERGOLAS"></a>
-                                <a href="img/IMG_20250803_192550_635.jpg" data-lightbox="portfolio" data-title="PERGOLAS"></a>
-                                <a href="img/IMG_20250803_192549_904.jpg" data-lightbox="portfolio" data-title="PERGOLAS"></a>
-                                <a href="img/IMG_4366.JPG" data-lightbox="portfolio" data-title="PERGOLAS"></a>
-                                <a href="img/IMG_4578.JPG" data-lightbox="portfolio" data-title="PERGOLAS"></a>
-                                <a href="img/IMG_4591.JPG" data-lightbox="portfolio" data-title="PERGOLAS"></a>
-                                <a href="img/IMG_4621.JPG" data-lightbox="portfolio" data-title="PERGOLAS"></a>
+                                <a href="img/IMG-20250824-WA0050.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/IMG_20250803_192550_700.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/IMG_4560.JPG" data-lightbox="portfolio"></a>
+                                <a href="img/PERGOLA 4.png" data-lightbox="portfolio"></a>
+                                <a href="img/IMG_20250803_192550_790.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/IMG_20250803_192549_528.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/IMG_20250803_192550_635.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/IMG_20250803_192549_904.jpg" data-lightbox="portfolio"></a>
+                                <a href="img/IMG_4366.JPG" data-lightbox="portfolio"></a>
+                                <a href="img/IMG_4578.JPG" data-lightbox="portfolio"></a>
+                                <a href="img/IMG_4591.JPG" data-lightbox="portfolio"></a>
+                                <a href="img/IMG_4621.JPG" data-lightbox="portfolio"></a>
                             </div>
                         </div>
                     </div>
@@ -582,136 +1534,104 @@
         </div>
     </div>
     <!-- "Final de la sección de Proyectos" -->
+    <!-- Volver Arriba -->
+<a href="#" class="back-to-top">
+  <i class="fas fa-angle-double-up"></i>
+</a>
 
-    <!-- Agregado CSS y JavaScript para los modales de casas -->
-    <style>
-        .modal-casa {
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            animation: fadeIn 0.3s ease-in-out;
-        }
+<!-- Estilos -->
+<style>
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: #25532D; /* Verde oscuro */
+  color: #ffffff; /* Icono blanco */
+  border-radius: 6px; /* Bordes ligeramente redondeados */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
 
-        .modal-content-casa {
-            background-color: #fefefe;
-            margin: 2% auto;
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 900px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
+/* Efecto al pasar el mouse */
+.back-to-top:hover {
+  background: #1e4426;
+  transform: translateY(-3px);
+}
 
-        .close-casa {
-            color: #aaa;
-            float: right;
-            font-size: 35px;
-            font-weight: bold;
-            position: absolute;
-            right: 20px;
-            top: 15px;
-            cursor: pointer;
-            z-index: 10000;
-        }
+/* Efecto borde suave para el ícono */
+.back-to-top i {
+  text-shadow: 0 0 3px #ffd700, 0 0 5px #00f; /* amarillo + azul leve */
+}
 
-        .close-casa:hover,
-        .close-casa:focus {
-            color: #14532d;
-            text-decoration: none;
-        }
+/* Oculto hasta hacer scroll */
+.back-to-top {
+  display: none;
+}
+</style>
 
-        .casa-info p {
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
+<!-- Script -->
+<script>
+  const backToTop = document.querySelector(".back-to-top");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      backToTop.style.display = "flex";
+    } else {
+      backToTop.style.display = "none";
+    }
+  });
+</script>
+Brayan Sánchez
+9:59 p.m.
+<!-- Volver Arriba -->
+<a href="#" class="back-to-top">
+  <i class="fas fa-angle-double-up"></i>
+</a>
 
-        .casa-info ul {
-            padding-left: 20px;
-        }
+<!-- Estilos -->
+<style>
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: #0d6b0d; /* Verde sólido */
+  color: #000000; /* Icono negro */
+  border-radius: 0; /* Esquinas cuadradas */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  text-decoration: none;
+  z-index: 999;
+  cursor: pointer;
+}
 
-        .casa-info ul li {
-            margin-bottom: 8px;
-            font-size: 15px;
-        }
+/* Oculto hasta hacer scroll */
+.back-to-top {
+  display: none;
+}
+</style>
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @media (max-width: 768px) {
-            .modal-content-casa {
-                margin: 5% auto;
-                padding: 20px;
-                width: 95%;
-            }
-            
-            .modal-content-casa .row {
-                flex-direction: column;
-            }
-            
-            .modal-content-casa .col-md-6 {
-                margin-bottom: 20px;
-            }
-        }
-    </style>
-
-    <script>
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Prevenir scroll del body
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restaurar scroll del body
-        }
-
-        function contactarVenta(nombreCasa) {
-            const mensaje = `Hola, estoy interesado en la ${nombreCasa}. Me gustaría recibir más información sobre esta propiedad.`;
-            const whatsappUrl = `https://wa.me/524423440411?text=${encodeURIComponent(mensaje)}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
-        function agendarVisita(nombreCasa) {
-            const mensaje = `Hola, me gustaría agendar una visita para conocer la ${nombreCasa}. ¿Cuándo sería posible?`;
-            const whatsappUrl = `https://wa.me/524423440411?text=${encodeURIComponent(mensaje)}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
-        // Cerrar modal al hacer clic fuera del contenido
-        window.onclick = function(event) {
-            const modals = document.querySelectorAll('.modal-casa');
-            modals.forEach(modal => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        }
-
-        // Cerrar modal con tecla Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                const modals = document.querySelectorAll('.modal-casa');
-                modals.forEach(modal => {
-                    if (modal.style.display === 'block') {
-                        modal.style.display = 'none';
-                        document.body.style.overflow = 'auto';
-                    }
-                });
-            }
-        });
-    </script>
-
-
+<!-- Script -->
+<script>
+  const backToTop = document.querySelector(".back-to-top");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      backToTop.style.display = "flex";
+    } else {
+      backToTop.style.display = "none";
+    }
+  });
+</script>
     <!--Inicio de Musica de Fondo Playlist mejorado por Charly -->
     <audio id="musicaFondo" autoplay  style="display: none;">
 </audio>
@@ -836,6 +1756,8 @@
         });
     </script>
 
+</body>
+</html>
     <!-- "Inicio del pie de página". -->
     <!--color Charly-->
     <div class="container-fluid bg-rich-black text-white py-5 px-sm-3 px-md-5">
@@ -890,13 +1812,14 @@
                         <!-- Cambiado de type="email" a textarea para comentarios -->
                         <textarea name="comentario" class="form-control border-0" placeholder="Escribe tu comentario aquí..." rows="4" required="required"></textarea>
                     </div>
+                    <!-- Eliminado campo de email según solicitud del usuario -->
                     <div>
-                        <!-- Agregado botón de enviar comentario con mejor estilo -->
-                        <button class="btn btn-primary py-2 px-4" type="submit">Enviar Comentario</button>
+                        <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Enviar</button>
                     </div>
                 </form>
             </div>
-<!--Final de comentarios-->
+        </div>
+<!--Fin de los comentarios-->
 
 
         <div class="container border-top border-secondary pt-5">
@@ -909,7 +1832,7 @@
     <!-- "Final del pie de página". -->
 
 
-    <!-- Agregado botón de retornar arriba con mejor posicionamiento -->
+    <!-- "Ir al inicio". -->
     <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
@@ -921,221 +1844,9 @@
     <script src="lib/isotope/isotope.pkgd.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
 
-    <!-- Agregado JavaScript personalizado para funcionalidades -->
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
     <script src="js/main.js"></script>
-
-    <!-- Script para manejar el formulario de comentarios -->
-    <script>
-        // Manejar envío de comentarios
-        document.getElementById('comentarios-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const nombre = this.nombre.value;
-            const comentario = this.comentario.value;
-            
-            // Aquí puedes agregar la lógica para enviar el comentario
-            // Por ejemplo, usando EmailJS o enviando a un servidor
-            
-            alert('¡Gracias por tu comentario, ' + nombre + '! Lo hemos recibido correctamente.');
-            this.reset();
-        });
-    </script>
-
-    <!-- Scripts para la galería de casas -->
-    <script>
-        function openGallery(galleryId) {
-            document.getElementById(galleryId).style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeGallery(galleryId) {
-            document.getElementById(galleryId).style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function openVisitModal() {
-            // Aquí puedes implementar la lógica para abrir un modal de agendar visita
-            // Por ahora, solo mostraremos un alert
-            alert('¡Próximamente podrás agendar visitas desde aquí!');
-        }
-
-        // Cerrar galerías al hacer clic fuera de ellas
-        document.addEventListener('click', function(event) {
-            const galleries = document.querySelectorAll('.gallery-overlay');
-            galleries.forEach(gallery => {
-                if (event.target === gallery) {
-                    gallery.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        });
-
-        // Cerrar galerías con tecla Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                const galleries = document.querySelectorAll('.gallery-overlay');
-                galleries.forEach(gallery => {
-                    if (gallery.style.display === 'flex') {
-                        gallery.style.display = 'none';
-                        document.body.style.overflow = 'auto';
-                    }
-                });
-            }
-        });
-    </script>
-
-    <!-- Estilos para las galerías de casas -->
-    <style>
-        .gallery-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 10000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        .gallery-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 85vh;
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,.3);
-        }
-
-        .gallery-content img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
-        .close-gallery {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 30px;
-            color: #aaa;
-            cursor: pointer;
-            transition: color .2s;
-        }
-
-        .close-gallery:hover {
-            color: #10b981;
-        }
-
-        .gallery-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,.4);
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 24px;
-            transition: background .2s;
-            z-index: 10;
-        }
-
-        .gallery-nav:hover {
-            background: rgba(0,0,0,.6);
-        }
-
-        .gallery-nav.prev {
-            left: 15px;
-        }
-
-        .gallery-nav.next {
-            right: 15px;
-        }
-
-        /* Estilos para las galerías específicas */
-        #galeriaAgua .gallery-content,
-        #galeriaFuego .gallery-content,
-        #galeriaAire .gallery-content {
-            width: 700px; /* Ajusta el ancho según necesites */
-            height: 500px; /* Ajusta la altura según necesites */
-        }
-
-        @media (max-width: 768px) {
-            #galeriaAgua .gallery-content,
-            #galeriaFuego .gallery-content,
-            #galeriaAire .gallery-content {
-                width: 90%;
-                height: auto;
-                max-height: 80vh;
-            }
-            .gallery-nav {
-                padding: 8px 12px;
-                font-size: 20px;
-            }
-            .close-gallery {
-                font-size: 26px;
-            }
-        }
-    </style>
-
-    <!-- Galerías de imágenes para cada casa -->
-    <div id="galeriaAgua" class="gallery-overlay">
-        <div class="gallery-content">
-            <span class="close-gallery" onclick="closeGallery('galeriaAgua')">&times;</span>
-            <img id="currentImageAgua" src="img/SALA AGUA.jpg" alt="Casa Elemento Agua">
-            <div class="gallery-nav prev" onclick="changeImageAgua(-1)">&#10094;</div>
-            <div class="gallery-nav next" onclick="changeImageAgua(1)">&#10095;</div>
-        </div>
-    </div>
-
-    <div id="galeriaFuego" class="gallery-overlay">
-        <div class="gallery-content">
-            <span class="close-gallery" onclick="closeGallery('galeriaFuego')">&times;</span>
-            <img id="currentImageFuego" src="img/VESUVIO 1.png" alt="Casa Elemento Fuego">
-            <div class="gallery-nav prev" onclick="changeImageFuego(-1)">&#10094;</div>
-            <div class="gallery-nav next" onclick="changeImageFuego(1)">&#10095;</div>
-        </div>
-    </div>
-
-    <div id="galeriaAire" class="gallery-overlay">
-        <div class="gallery-content">
-            <span class="close-gallery" onclick="closeGallery('galeriaAire')">&times;</span>
-            <img id="currentImageAire" src="img/SALA.jpeg" alt="Casa Elemento Aire">
-            <div class="gallery-nav prev" onclick="changeImageAire(-1)">&#10094;</div>
-            <div class="gallery-nav next" onclick="changeImageAire(1)">&#10095;</div>
-        </div>
-    </div>
-
-    <!-- JavaScript para la funcionalidad de las galerías -->
-    <script>
-        const imagesAgua = ["img/SALA AGUA.jpg", "img/AGUA 2.jpg", "img/AGUA 3.jpg"];
-        let currentImageIndexAgua = 0;
-
-        const imagesFuego = ["img/VESUVIO 1.png", "img/VESUVIO 2.png", "img/VESUVIO 3.png"];
-        let currentImageIndexFuego = 0;
-
-        const imagesAire = ["img/SALA.jpeg", "img/AIRE 2.jpg", "img/AIRE 3.jpg"];
-        let currentImageIndexAire = 0;
-
-        function changeImageAgua(n) {
-            currentImageIndexAgua = (currentImageIndexAgua + n + imagesAgua.length) % imagesAgua.length;
-            document.getElementById('currentImageAgua').src = imagesAgua[currentImageIndexAgua];
-        }
-
-        function changeImageFuego(n) {
-            currentImageIndexFuego = (currentImageIndexFuego + n + imagesFuego.length) % imagesFuego.length;
-            document.getElementById('currentImageFuego').src = imagesFuego[currentImageIndexFuego];
-        }
-
-        function changeImageAire(n) {
-            currentImageIndexAire = (currentImageIndexAire + n + imagesAire.length) % imagesAire.length;
-            document.getElementById('currentImageAire').src = imagesAire[currentImageIndexAire];
-        }
-    </script>
-</body>
-</html>
