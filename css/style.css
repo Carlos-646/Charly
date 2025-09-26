@@ -281,12 +281,14 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 .inicio-carta {
-  background:#fff;
-  border:1px solid #c5ffbf;
-  border-radius:14px;
-  box-shadow:0 10px 24px #041C19(0,0,0,.06);
-  padding:28px;
-  text-align:center;
+  background: #fff;
+  border: 1px solid #c5ffbf;
+  border-radius: 14px;
+  box-shadow:0 5px 20px #041C19(0,0,0,.06);
+  padding: 20px;
+  text-align: center;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .inicio-letras {
@@ -10510,4 +10512,5 @@ h6 {
 
 .carrusel-btn.next {
   right: 10px;
+
 }
