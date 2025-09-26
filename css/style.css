@@ -162,20 +162,15 @@ html {
 
 @media (max-width: 768px) {
   .stats-grid-cards {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
     gap: 16px;
-    margin: 0 auto;
-    padding: 0 12px; 
-    width: 100%;
-    box-sizing: border-box;
+    padding: 0 12px;
   }
 
   .inicio-carta {
     width: 100%;
-    max-width: 100%; 
-    margin: 0;
+    max-width: 100%;
+    margin: 0 auto;
   }
 }
 
@@ -189,6 +184,12 @@ html {
 @media (min-width: 769px) and (max-width: 1024px) {
   .inicio-carta {
     padding: 18px 16px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .stats-grid-cards {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
