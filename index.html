@@ -1163,70 +1163,204 @@
     <!-- Final de Proyectos -->
 
     <!-- Testimonial Start -->
-    <div class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7 py-5 pr-md-5">
-                    <h6 class="text-shamrock font-weight-normal text-uppercase mb-3 pt-5">Reseñas</h6>
-                    <h1 class="mb-4 section-title">Comentarios de nuestros clientes</h1>
-                    <div class="owl-carousel testimonial-carousel position-relative pb-5 mb-md-5">
-                        <div class="d-flex flex-column">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="rounded-circle d-flex align-items-center justify-content-center bg-primary text-white" 
-     style="width: 60px; height: 60px; font-size: 24px; font-weight: bold;">
-  A
-</div>
+<section class="testimonials-section py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Texto / Carrusel -->
+      <div class="col-md-7 py-4 pr-md-5">
+        <h6 class="text-shamrock text-uppercase mb-3">Testimonios</h6>
+        <h1 class="display-5 fw-bold text-dark mb-4">¿Qué dicen nuestros clientes?</h1>
 
-                                <div class="ml-3">
-                                    <h5>Alejandro Torres</h5>
-                                </div>
-                            </div>
-                            <p class="text-dark">“El servicio fue excelente desde el primer momento. Me atendieron con profesionalismo y rapidez, resolviendo todas mis dudas. Sin duda volveré a contratar sus servicios y los recomendaré a otros.”</p>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="rounded-circle d-flex align-items-center justify-content-center bg-primary text-white" 
-     style="width: 60px; height: 60px; font-size: 24px; font-weight: bold;">
-  C
-</div>
+        <div class="owl-carousel testimonial-carousel">
 
-                                <div class="ml-3">
-                                    <h5>Carlos Mendoza</h5>
-                                </div>
-                            </div>
-                            <p class="m-0 text-dark">“Me ayudaron muchísimo con lo que necesitaba. Todo fue rápido, claro y con mucha paciencia. ¡Los volvería a elegir sin pensarlo!”
-
-                            </p>
-
-                            </div>
-                        <div class="d-flex flex-column">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="rounded-circle d-flex align-items-center justify-content-center bg-primary text-white" 
-     style="width: 60px; height: 60px; font-size: 24; font-weight: bold;">
-  E
-</div>
-
-                                <div class="ml-3">
-                                    <h5>Eduardo López</h5>
-                                </div>
-                            </div>
-                            <p class="m-0 text-dark">“Excelente servicio, superó mis expectativas.”
-
-                            </p>
-
-                            </div>
-                    
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="d-flex flex-column align-items-center justify-content-center h-100 overflow-hidden">
-                        <img class="h-window" src="img/ELEGANTE1.jpg" alt="">
-                    </div>
-                </div>
+          <!-- Slide 1 -->
+          <article class="testimonial-card">
+            <div class="stars" aria-label="5 de 5 estrellas">
+              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+              <i class="fa fa-star"></i><i class="fa fa-star"></i>
             </div>
+            <p class="testimonial-text">
+              Tengo más de 10 años @totalplaymx y si bien no es barato durante todos estos años ha sido el mejor
+              servicio de todos. He tenido 2 fallas en 10 años y el soporte siempre fue muy rápido.
+            </p>
+            <h5 class="client-name">José Jair</h5>
+          </article>
+
+          <!-- Slide 2 -->
+          <article class="testimonial-card">
+            <div class="stars" aria-label="5 de 5 estrellas">
+              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+              <i class="fa fa-star"></i><i class="fa fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              El servicio fue excelente desde el primer momento. Profesionalismo y rapidez; resolvieron todo.
+              Los volvería a contratar sin dudarlo.
+            </p>
+            <h5 class="client-name">Alejandro Torres</h5>
+          </article>
+
+          <!-- Slide 3 -->
+          <article class="testimonial-card">
+            <div class="stars" aria-label="5 de 5 estrellas">
+              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+              <i class="fa fa-star"></i><i class="fa fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              Me ayudaron muchísimo. Todo fue claro y rápido, con mucha paciencia. ¡100% recomendados!
+            </p>
+            <h5 class="client-name">Carlos Mendoza</h5>
+          </article>
         </div>
-    </div>    
-    <!-- Testimonial End -->
+      </div>
+
+      <!-- Imagen lateral -->
+      <div class="col-md-5">
+        <div class="d-flex align-items-center justify-content-center h-100 overflow-hidden">
+          <img class="img-fluid rounded-3 shadow-lg testimonial-side-image" src="img/ELEGANTE1.jpg" alt="Clientes satisfechos">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Testimonial End -->
+
+<!-- ESTILOS -->
+<style>
+  :root{
+    /* Colores claros para integrar con la página */
+    --sec-bg:#ffffff;       /* fondo sección blanco */
+    --card-bg:#f9f9f9;      /* fondo tarjeta claro */
+    --card-br:#dddddd;      /* borde suave */
+    --text:#000000;         /* texto principal negro */
+    --muted:#555555;        /* texto secundario gris */
+    --accent:#00c58e;       /* verde principal */
+    --accent-2:#00e6a0;     /* verde degradado */
+  }
+
+  .text-shamrock{color:var(--Shamrock)!important;}
+
+  .testimonials-section{
+    background: var(--sec-bg);
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+  }
+
+  /* Tarjeta del testimonio */
+  .testimonial-card{
+    position: relative;
+    background: var(--card-bg);
+    color: var(--text);
+    border:1px solid var(--card-br);
+    border-radius: 18px;
+    padding: 48px 36px 64px;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,.08);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .testimonial-text{
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin: 18px 0 20px;
+  }
+
+  .client-name{
+    color:var(--text);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  /* Estrellas compactas */
+  .stars{
+    font-size: 1.4rem;
+    color: #ffcc33;
+    display:inline-flex;
+    gap:0;
+    letter-spacing:0;
+  }
+  .stars i{
+    margin:0;
+    padding:0;
+  }
+
+  /* Barra degradada inferior */
+  .gradient-underline{
+    content:"";
+    position:absolute;
+    left: 24px; right: 24px; bottom: 8px;
+    height: 8px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  }
+
+  /* Imagen lateral */
+  .testimonial-side-image{
+    max-height: 520px;
+    object-fit: cover;
+  }
+
+  /* Owl nav personalizado */
+  .testimonial-carousel .owl-nav button{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent!important;
+    border: 0;
+    width: 46px; height: 46px;
+    display: grid; place-items: center;
+    color: var(--text)!important;
+    font-size: 28px!important;
+    line-height: 1;
+    opacity: .7;
+  }
+  .testimonial-carousel .owl-nav button.owl-prev{ left: -18px; }
+  .testimonial-carousel .owl-nav button.owl-next{ right: -18px; }
+  .testimonial-carousel .owl-nav button:hover{ opacity: 1; }
+
+  /* Dots */
+  .testimonial-carousel .owl-dots{
+    margin-top: 18px;
+  }
+  .testimonial-carousel .owl-dot span{
+    width:10px; height:10px;
+    background:#00000022; display:block; border-radius:999px;
+  }
+  .testimonial-carousel .owl-dot.active span{
+    background: var(--accent);
+  }
+
+  /* Responsive */
+  @media (max-width: 991.98px){
+    .testimonial-carousel .owl-nav button.owl-prev{ left: -6px; }
+    .testimonial-carousel .owl-nav button.owl-next{ right: -6px; }
+  }
+  @media (max-width: 576px){
+    .testimonial-card{ padding: 36px 22px 56px; }
+    .stars{ font-size: 1.2rem; }
+    .testimonial-text{ font-size: 1rem; }
+  }
+</style>
+
+<!-- INIT OwlCarousel -->
+<script>
+  (function(){
+    if (typeof $ === "undefined" || typeof $.fn.owlCarousel === "undefined") return;
+    $('.testimonial-carousel').owlCarousel({
+      items: 1,
+      margin: 24,
+      loop: true,
+      nav: true,
+      dots: true,
+      smartSpeed: 550,
+      navText: ['<i class="fa fa-chevron-left"></i>','<i class="fa fa-chevron-right"></i>'],
+      autoHeight: true
+    });
+  })();
+</script>
+<!--Testimonial end-->
 
 
     <!-- Inicio del Blog -->
