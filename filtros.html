@@ -213,26 +213,25 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
           <div class="navbar-nav ml-auto py-0">
-                        <a href="index.html" class="nav-item text-rich-black nav-link active">Hogar</a>
-                        <a href="about.html" class="nav-item text-timber-green nav-link">Acerca de</a>
-                        <a href="service.html" class="nav-item text-timber-green nav-link">Servicios</a>
-                        <a href="project.html" class="nav-item text-timber-green nav-link">Proyectos</a>
-                        <a href="filtros.html" class="nav-item text-timber-green nav-link">Diseñame</a>
-                        <a href="contact.html" class="nav-item text-timber-green nav-link">Contacto</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle text-timber-green" data-toggle="dropdown">Más Paginas...</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="blog.html" class="dropdown-item text-timber-green">Nuestra Revista</a>
-                                <a href="single.html" class="dropdown-item text-timber-green">Sabías Qué…?</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+            <a href="index.html" class="nav-item text-rich-black nav-link active">Hogar</a>
+            <a href="about.html" class="nav-item text-timber-green nav-link">Acerca de</a>
+            <a href="service.html" class="nav-item text-timber-green nav-link">Servicio</a>
+            <a href="project.html" class="nav-item text-timber-green nav-link">Proyecto</a>
+            <div class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle text-timber-green" data-toggle="dropdown">Paginas</a>
+              <div class="dropdown-menu rounded-0 m-0">
+                <a href="blog.html" class="dropdown-item text-timber-green">Nuestra Revista</a>
+                <a href="single.html" class="dropdown-item text-timber-green">Sabías Qué…?</a>
+                <a href="filtros.html" class="dropdown-item text-timber-green">Diseñame</a>
+              </div>
+            </div>
+            <a href="contact.html" class="nav-item text-timber-green nav-link">Contacto</a>
+          </div>
         </div>
+      </nav>
     </div>
+  </div>
   <!-- Fin Navbar -->
-
   <!-- Inicio de Navegación -->
   <div class="container-fluid bg-timber-green py-3">
     <div class="container">
@@ -287,296 +286,63 @@
         </div>
     </div>
     <!-- Final del encabezado de la página -->
-
-
-  <!-- INICIO DEL EDITOR -->
-  <div class="container-fluid py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <!-- Header Section -->
-          <div class="text-center mb-5">
-            <h2 class="display-4 font-weight-bold text-rich-black mb-3">Transforma tu Espacio en Instantes</h2>
-            <p class="lead text-dark px-3" id="actionInstruction">
-            "Sube tu imagen, selecciona áreas, aplica color y textura. Deja volar tu imaginación y haznos llegar tu idea Nosotros hacemos la magia"<br>
-            </p>
-          </div>
-
-          <!-- Upload and Controls Section -->
-          <div class="card shadow-lg border-0 mb-4">
-            <div class="card-header bg-timber-green text-white text-center py-3" style="background: linear-gradient(45deg, #32612d, #29961d);">
-              <h5 class="mb-0"><i class="fas fa-upload mr-2"></i>Controles de Imagen</h5>
-            </div>
-            <div class="card-body p-4">
-              <div class="text-center mb-3">
-                <label for="upload" class="btn btn-primary btn-lg px-4 py-2 mb-0">
-                  <i class="fas fa-cloud-upload-alt mr-2"></i>Subir Imagen
-                </label>
-                <input type="file" id="upload" accept="image/*" style="display: none;">
-              </div>
-              <div class="text-center">
-                <button class="btn btn-outline-warning px-4 py-2" onclick="clearSelection()">
-                  <i class="fas fa-eraser mr-1"></i>Limpiar Selección
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Selection Tools Section -->
-          <div class="card shadow-lg border-0 mb-4">
-            <div class="card-header bg-rich-black text-white text-center py-3" style="background: linear-gradient(45deg, #32612d, #29961d);">
-              <h5 class="mb-0"><i class="fas fa-mouse-pointer mr-2"></i>Herramientas de Selección</h5>
-            </div>
-            <div class="card-body p-4">
-              <div class="row align-items-center">
-                <div class="col-md-6 mb-3 mb-md-0">
-                  <div class="text-center">
-                    <label class="font-weight-bold text-rich-black mb-2 d-block">
-                      Tolerancia: <span id="tolVal" class="badge badge-primary">30</span>
-                    </label>
-                    <input type="range" id="tolerance" min="1" max="100" value="30" class="custom-range" style="width: 200px;">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="d-flex justify-content-center">
-                    <button class="btn btn-success mx-2" onclick="mode='add'">
-                      <i class="fas fa-plus mr-1"></i>Seleccionar Área
-                    </button>
-                    <button class="btn btn-danger mx-2" onclick="mode='remove'">
-                      <i class="fas fa-minus mr-1"></i>Remover Área
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Canvas Section -->
-          <div class="text-center mb-4">
-            <div class="d-inline-block position-relative">
-              <canvas id="canvas" width="800" height="600"
-                      class="img-fluid shadow-lg rounded"
-                      style="border: 4px solid #32612d; cursor: crosshair; max-width: 100%; height: auto;">
-              </canvas>
-            </div>
-          </div>
-
-          <!-- Dropdown Filter Buttons Section -->
-          <div class="row mb-4">
-            <!-- Color Selection Dropdown -->
-            <div class="col-md-6 mb-3">
-              <button class="btn btn-lg btn-block shadow-lg text-white py-3"
-                      style="background: linear-gradient(45deg, #32612d, #29961d);"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#colorSection"
-                      aria-expanded="false"
-                      aria-controls="colorSection">
-                <i class="fas fa-palette mr-2"></i>Selección de Colores
-                <i class="fas fa-chevron-down float-right mt-1"></i>
-              </button>
-
-              <div class="collapse mt-3" id="colorSection">
-                <div class="card shadow-lg border-0">
-                  <div class="card-body p-4 text-center">
-                    <div class="mb-3">
-                      <h6 class="font-weight-bold text-rich-black mb-3">Colores Predefinidos</h6>
-                      <div id="colorBar" class="d-flex flex-wrap justify-content-center mb-3"></div>
-                    </div>
-                    <div class="mb-3">
-                      <h6 class="font-weight-bold text-rich-black mb-2">Color Personalizado</h6>
-                      <input type="color" id="colorPicker" value="#FF0000" class="mx-auto d-block">
-                    </div>
-                    <button class="btn btn-primary btn-lg px-4" onclick="applyColor()">
-                      <i class="fas fa-paint-brush mr-2"></i>Aplicar Color
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Texture Selection Dropdown -->
-            <div class="col-md-6 mb-3">
-              <button class="btn btn-lg btn-block shadow-lg text-white py-3"
-                      style="background: linear-gradient(45deg, #32612d, #29961d);"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#textureSection"
-                      aria-expanded="false"
-                      aria-controls="textureSection">
-                <i class="fas fa-th-large mr-2"></i>Texturas Disponibles
-                <i class="fas fa-chevron-down float-right mt-1"></i>
-              </button>
-
-              <div class="collapse mt-3" id="textureSection">
-                <div class="card shadow-lg border-0">
-                  <div class="card-body p-4">
-                    <!-- Reorganizando botones de texturas a 3 columnas para mejor legibilidad -->
-                    <div class="row" id="textureBar">
-                      <!-- Primera fila de texturas -->
-                      <div class="col-12 mb-4">
-                        <div class="row">
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/granito-blanco.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 1em; line-height: 1.3;">GRANITO</span>
-                            </button>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/Textura de cantera.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 1em; line-height: 1.3;">CANTERA</span>
-                            </button>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/Textura Marmol.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 1em; line-height: 1.3;">MÁRMOL</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Segunda fila de texturas -->
-                      <div class="col-12 mb-4">
-                        <div class="row">
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/MURO VERDE0.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 0.9em; line-height: 1.2;">MURO VERDE</span>
-                            </button>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/textura de madera.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 1em; line-height: 1.3;">MADERA</span>
-                            </button>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/PIEDRA NEGRA.png')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 0.9em; line-height: 1.2;">PIEDRA NEGRA</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Tercera fila de texturas -->
-                      <div class="col-12 mb-4">
-                        <div class="row">
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/TEXTURA DE ROCA.png')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 0.85em; line-height: 1.2;">REVESTIMIENTO PIEDRA</span>
-                            </button>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/LAMBRIN NEGRO.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 0.9em; line-height: 1.2;">LAMBRIN NEGRO</span>
-                            </button>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/LAMBRIN CAFE.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 0.9em; line-height: 1.2;">LAMBRIN CAFÉ</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Cuarta fila de texturas -->
-                      <div class="col-12 mb-4">
-                        <div class="row">
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/MICROCEMENTO.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 0.9em; line-height: 1.2;">MICROCEMENTO</span>
-                            </button>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/MARMOL NEGRO.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 0.9em; line-height: 1.2;">MÁRMOL NEGRO</span>
-                            </button>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/MARMOL GRIS.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 0.9em; line-height: 1.2;">MÁRMOL GRIS</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Quinta fila de texturas -->
-                      <div class="col-12 mb-4">
-                        <div class="row">
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/MICROCEMENTO ARENA.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 0.85em; line-height: 1.2;">MICROCEMENTO ARENA</span>
-                            </button>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/MICROCEMENTO BEIGE.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 0.85em; line-height: 1.2;">MICROCEMENTO BEIGE</span>
-                            </button>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/TAPIZ RAYADO VERTICAL.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 0.9em; line-height: 1.2;">TAPIZ RAYADO</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Sexta fila de texturas -->
-                      <div class="col-12 mb-4">
-                        <div class="row">
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/TAPIZ ONDAS.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 0.9em; line-height: 1.2;">TAPIZ ONDAS</span>
-                            </button>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/TAPIZ RELIEVE.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 0.9em; line-height: 1.2;">TAPIZ RELIEVE</span>
-                            </button>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                            <button class="btn btn-outline-secondary btn-block py-4 d-flex align-items-center justify-content-center" onclick="selectTexture('img/MADERA CAOBA.jpg')" style="min-height: 90px; max-height: 90px; overflow: hidden;">
-                              <span class="text-center font-weight-bold" style="font-size: 0.9em; line-height: 1.2;">MADERA CAOBA</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="text-center mt-4">
-                      <div class="btn-group" role="group">
-                        <button class="btn btn-info px-4" onclick="applyTextureOnly()">
-                          <i class="fas fa-texture mr-2"></i>Solo Textura
-                        </button>
-                        <button class="btn btn-warning px-4" onclick="applyTextureWithColor()">
-                          <i class="fas fa-layer-group mr-2"></i>Mezclar Textura y Color
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Save and Send Section -->
-          <div class="card shadow-lg border-0 mb-5">
-            <div class="card-header bg-gradient text-white text-center py-3" style="background: linear-gradient(45deg, #32612d, #29961d);">
-              <h5 class="mb-0"><i class="fas fa-save mr-2"></i>Guardar y Compartir</h5>
-            </div>
-            <div class="card-body p-4 text-center">
-              <div class="btn-group-vertical btn-group-lg" role="group">
-                <button class="btn btn-success mb-2 px-5" onclick="downloadImage()">
-                  <i class="fas fa-download mr-2"></i>Descargar Imagen
-                </button>
-                <button class="btn btn-primary px-5" onclick="sendEmail()">
-                  <i class="fas fa-envelope mr-2"></i>Enviar por Correo
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- CONTENIDO PRINCIPAL -->
+   <br>
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 800px; margin: auto;">
+  <h2>Transforma tu Espacio en Instantes</h2>
+  <p id="actionInstruction" class="text-dark">"Sube tu imagen, selecciona áreas, aplica color y textura. Deja volar tu imaginacion y haznos llegar tu idea.
+Nosotros hacemos la magia"</p></br>
+  <!-- Subir imagen -->
+  <input type="file" id="upload" accept="image/*" class="btn-filtro" style="margin-bottom: 20px;">
+  <button class="btn-filtro" onclick="resetImage()">Restaurar Imagen</button>
+  <button class="btn-filtro" onclick="clearSelection()">Limpiar Selección</button>
+  <!-- Tolerancia -->
+  <div style="margin: 10px 0;">
+    <label class="text-rich-black">Tolerancia: <span id="tolVal">30</span></label>
+    <input type="range" id="tolerance" min="1" max="100" value="30" style="width:200px;">
   </div>
+  <!-- Modos de selección -->
+  <div>
+    <button class="btn-filtro" onclick="mode='add'">Seleccionar Área</button>
+    <button class="btn-filtro" onclick="mode='remove'">Remover Área</button>
+  </div>
+  <br></br>
+  <!-- Canvas -->
+  <canvas id="canvas" width="800" height="600" style="border: 10px solid #32612d; margin:10px auto; cursor:crosshair; border-radius: 8px;"></canvas>
+  <!-- Barra de colores -->
+   <div>
+  <h3 style="margin-bottom: 5px;">Colores</h3>
+  <div id="colorBar" style="margin-bottom:10px;"></div>
+  <input type="color" id="colorPicker" value="#FF0000">
+  </div>
+  <!-- Aplicar -->
+  <button class="btn-filtro" onclick="applyColor()">Aplicar Color</button>
+  
+  <!-- Texturas -->
+  
+  <h3>Texturas</h3>
+  <div id="textureBar">
+    <button class="btn-filtro" onclick="selectTexture('img/granito-blanco.jpg')">GRANITO</button>
+    <button class="btn-filtro" onclick="selectTexture('img/Textura de cantera.jpg')">CANTERA</button>
+    <button class="btn-filtro" onclick="selectTexture('img/Textura Marmol.jpg')">MARMOL</button>
+    <button class="btn-filtro" onclick="selectTexture('img/MURO VERDE0.jpg')">MURO VERDE</button>
+    <button class="btn-filtro" onclick="selectTexture('img/textura de madera.jpg')">MADERA</button>
+    <button class="btn-filtro" onclick="selectTexture('img/PIEDRA NEGRA.png')">PIEDRA NEGRA</button>
+    <button class="btn-filtro" onclick="selectTexture('img/TEXTURA DE ROCA.png')">TEXTURA DE ROCA</button>
+  </div>
+  
+  <!-- Aplicar textura -->
+  <div style="margin-top: 10px;">
+    <button class="btn-filtro" onclick="applyTextureOnly()">Aplicar Solo Textura</button>
+    <button class="btn-filtro" onclick="applyTextureWithColor()">Mezclar Textura y Color</button>
+  </div>
+  <!-- Guardar y enviar -->
+  <h3>Guardar o Enviar</h3>
+  <button class="btn-filtro" onclick="downloadImage()">Descargar</button>
+  <button class="btn-filtro" onclick="sendEmail()">Enviar por Correo</button>
+</div>
 
+<br></br>
 <style>
   .btn-filtro{
     background: #32612d;
@@ -586,124 +352,12 @@
     padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background 0.2s;
   }
   .btn-filtro:hover {
     background: #29961d;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  }
-
-  /* Enhanced card styles */
-  .card {
-    transition: transform 0.2s ease-in-out;
-  }
-
-  .card:hover {
-    transform: translateY(-2px);
-  }
-
-  /* Custom color picker styling */
-  #colorPicker {
-    width: 80px;
-    height: 80px;
-    border: 4px solid #fff;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: none;
-    padding: 0;
-    transition: transform 0.2s ease;
-  }
-
-  #colorPicker:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-  }
-
-  #colorPicker::-webkit-color-swatch-wrapper {
-    padding: 0;
-    border: none;
-    border-radius: 50%;
-  }
-
-  #colorPicker::-webkit-color-swatch {
-    border: none;
-    border-radius: 50%;
-  }
-
-  #colorPicker::-moz-color-swatch {
-    border: none;
-    border-radius: 50%;
-  }
-
-  /* Enhanced button styles */
-  .btn {
-    transition: all 0.3s ease;
-  }
-
-  .btn:hover {
-    transform: translateY(-1px);
-  }
-
-  /* Canvas container styling */
-  #canvas {
-    transition: box-shadow 0.3s ease;
-  }
-
-  #canvas:hover {
-    box-shadow: 0 8px 25px rgba(50, 97, 45, 0.3) !important;
-  }
-
-  /* Color bar enhanced styling */
-  #colorBar button {
-    transition: all 0.2s ease;
-    border: 3px solid #fff !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-
-  #colorBar button:hover {
-    transform: scale(1.15);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  }
-
-  /* Custom button styles for texture buttons */
-  .texture-btn {
-    min-height: 80px; /* Increased height */
-    max-height: 80px; /* Fixed height */
-    overflow: hidden; /* Ensures text fits */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem 0.75rem; /* Adjusted padding */
-    font-size: 0.85em; /* Adjusted font size */
-    line-height: 1.2; /* Adjusted line height */
-    text-align: center;
-    font-weight: bold;
-  }
-
-  /* Responsive improvements */
-  @media (max-width: 768px) {
-    .display-4 {
-      font-size: 2rem;
-    }
-
-    #canvas {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .btn-group-vertical .btn {
-      margin-bottom: 10px;
-    }
   }
 </style>
-
 <script>
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
@@ -827,7 +481,7 @@
     floodFill(x, y);
     highlightSelection();
     document.getElementById('actionInstruction').innerText = mode === 'add' ?
-      "✅ Área koja se va a modificar." : "➖ Área removida de la selección.";
+      "✅ Área añadida." : "➖ Área removida.";
   });
   function colorDistance(c1, c2) {
     return Math.sqrt(
@@ -922,7 +576,6 @@
   }
   function clearSelection() {
     resetImage();
-    document.getElementById('actionInstruction').innerText = "Sube tu imagen, selecciona áreas, aplica color y textura. Deja volar tu imaginación y haznos llegar tu idea Nosotros hacemos la magia";
   }
   function downloadImage() {
     const link = document.createElement('a');
@@ -937,9 +590,7 @@
   window.open(gmailUrl, '_blank');
   }
 </script>
-<!-- FIN DEL EDITOR  -->
-
-
+<!-- FIN DEL CONTENIDO PRINCIPAL -->
   <div class="container-fluid bg-rich-black text-timber-green py-5 px-sm-3 px-md-5">
     <div class="row pt-5">
       <div class="col-lg-3 col-md-6 mb-5">
@@ -1031,7 +682,7 @@
 </button>
 
 <script>
-    // Aqui se ponen las canciones
+    // Aqui se ponen las canciones 
     const canciones = [
         "Musica/Lost Love.mp3",
              "Musica/Father Ocean.mp3",
@@ -1065,10 +716,10 @@
     function iniciarMusicaAutomatica() {
         audio.src = canciones[cancionActual];
         audio.volume = 1.0; // Volumen máximo
-
+        
         // Intenta reproducir inmediatamente
         const playPromise = audio.play();
-
+        
         if (playPromise !== undefined) {
             playPromise.then(() => {
                 isPlaying = true;
@@ -1127,7 +778,7 @@
     <script>
         document.getElementById('comentarios-form').addEventListener('submit', function(event) {
             event.preventDefault();
-
+            
             // Obtener los datos del formulario
             const formData = new FormData(this);
             const templateParams = {
@@ -1135,7 +786,7 @@
                 message: formData.get('comentario'),
                 fecha: new Date().toLocaleDateString('es-ES')
             };
-
+            
             // Enviar email usando EmailJS
             emailjs.send('service_uovpo9g', 'template_q54exgf', templateParams)
                 .then(function(response) {
